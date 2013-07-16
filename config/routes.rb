@@ -1,6 +1,8 @@
 WeixinServer::Application.routes.draw do
   captcha_route
   
+  mount API => '/'
+  
   root to: 'home#index'
   
   devise_for :users, skip: [:registrations],

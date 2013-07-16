@@ -53,11 +53,14 @@ GEM
       multi_json (~> 1.0)
     angularjs-rails-resource (0.2.0)
     arel (3.0.2)
+    backports (3.3.3)
     bcrypt-ruby (3.1.1)
     better_errors (0.9.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
     bson (1.9.1)
+    bson_ext (1.9.1)
+      bson (~> 1.9.1)
     builder (3.0.4)
     carrierwave (0.9.0)
       activemodel (>= 3.2.0)
@@ -76,6 +79,7 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     daemons (1.1.9)
+    descendants_tracker (0.0.1)
     devise (3.0.0)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -93,6 +97,22 @@ GEM
     eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    grape (0.5.0)
+      activesupport
+      builder
+      hashie (>= 1.2.0)
+      multi_json (>= 1.3.2)
+      multi_xml (>= 0.5.2)
+      rack (>= 1.3.0)
+      rack-accept
+      rack-mount
+      virtus
+    grape-rabl (0.2.0)
+      grape (~> 0.3)
+      i18n
+      rabl
+      tilt
+    hashie (2.0.5)
     hike (1.2.3)
     i18n (0.6.1)
     journey (1.0.4)
@@ -128,6 +148,7 @@ GEM
       mongoid
     moped (1.5.0)
     multi_json (1.7.7)
+    multi_xml (0.5.4)
     net-sftp (2.0.5)
       net-ssh (>= 2.0.9)
     net-ssh (2.6.8)
@@ -150,9 +171,15 @@ GEM
       slop (~> 3.0)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
+    rabl (0.8.6)
+      activesupport (>= 2.3.14)
     rack (1.4.5)
+    rack-accept (0.4.5)
+      rack (>= 0.4)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-mount (0.8.3)
+      rack (>= 1.0.0)
     rack-ssl (1.3.3)
       rack
     rack-test (0.6.2)
@@ -177,6 +204,13 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    redis (2.2.2)
+    redis-namespace (1.1.0)
+      redis (< 3.0.0)
+    redis-objects (0.5.3)
+      redis (>= 2.1.1)
+    redis-store (1.0.0.1)
+      redis (~> 2.2.1)
     rmagick (2.13.2)
     rspec-core (2.14.3)
     rspec-expectations (2.14.0)
@@ -232,6 +266,9 @@ GEM
     uglifier (2.1.2)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    virtus (0.5.5)
+      backports (~> 3.3)
+      descendants_tracker (~> 0.0.1)
     warden (1.2.3)
       rack (>= 1.0)
     yard (0.8.6.2)
@@ -244,12 +281,15 @@ DEPENDENCIES
   active_model_serializers
   angularjs-rails-resource
   better_errors
+  bson_ext
   carrierwave
   carrierwave-ftp!
   carrierwave-mongoid
   coffee-rails (~> 3.2.1)
   devise
   easy_captcha
+  grape
+  grape-rabl
   i18n-js!
   jquery-rails
   kaminari
@@ -266,6 +306,9 @@ DEPENDENCIES
   quiet_assets
   rails (= 3.2.13)
   rails-i18n
+  redis-namespace
+  redis-objects
+  redis-store (~> 1.0.0)
   sass-rails (~> 3.2.3)
   settingslogic
   simple_form

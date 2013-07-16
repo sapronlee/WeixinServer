@@ -16,6 +16,7 @@ gem 'active_model_serializers'
 gem 'mini_magick'
 gem "mime-types", "~> 1.23"
 gem 'streamio-ffmpeg'
+gem 'bson_ext'
 
 # Mongoid
 gem 'mongoid', '~> 3.0.0'
@@ -35,6 +36,11 @@ gem 'simple_form'
 gem 'settingslogic'
 gem 'mongoid-app_settings'
 
+# Redis
+gem 'redis-namespace'
+gem 'redis-objects'
+gem 'redis-store', '~> 1.0.0'
+
 # CSS and JS
 gem 'ace-theme-rails', path: '/Users/chucklee/Developments/Web/Gems/ace-theme-rails'
 gem 'angularjs-rails-resource'
@@ -44,6 +50,10 @@ gem 'easy_captcha'
 
 # Pagination
 gem 'kaminari'
+
+# API
+gem 'grape'
+gem 'grape-rabl'
 
 # View Template
 gem 'slim', '~> 1.3.8'

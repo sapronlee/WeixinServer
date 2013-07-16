@@ -1,17 +1,22 @@
 defaults: &defaults
-  app_name: 'SiChuan Weixin'
-  app_name_locale: '四川旅游局微信管理后台'
+  app_name: 'OneTrip Weixin'
+  app_name_locale: '壹旅游微信服务平台'
   domain: '127.0.0.1:3000'
+  upload_url: 'http://127.0.0.1:3000'
+  
   mailer:
     address: 'smtp.gmail.com'
     port: 587
     authentication: :plain
     domain: 'gmail.com'
-    user_name: 'server@email.com'
-    password: 'xxxxxx'
+    user_name: 'sapronlee@gmail.com'
+    password: 'libogood0724'
+    
   upload_image_extension: ['jpg','jpeg', 'gif', 'png']
   upload_video_extension: ['mp4']
   upload_audio_extension: ['mp3']
+  
+  allow_manage_account_limit: 4
  
 development:
   <<: *defaults

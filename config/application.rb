@@ -10,7 +10,12 @@ end
 
 module WeixinServer
   class Application < Rails::Application
+    config.cache_store = :redis_store
+    
+    config.paths.add "app/api", :glob => "**/*.rb"
+    
     config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += %W(#{config.root}/app/api)
 
     config.time_zone = 'Beijing'
 
@@ -31,5 +36,9 @@ module WeixinServer
     config.assets.version = '1.0'
     
     config.middleware.use Rack::ContentLength
+    
+    config.middleware.use(Rack::Config) do |env|
+      env['api.tilt.root'] = Rails.root.join 'app', 'views', 'api'
+    end
   end
 end
