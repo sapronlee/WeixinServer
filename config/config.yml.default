@@ -1,0 +1,23 @@
+defaults: &defaults
+  app_name: 'SiChuan Weixin'
+  app_name_locale: '四川旅游局微信管理后台'
+  domain: '127.0.0.1:3000'
+  mailer:
+    address: 'smtp.gmail.com'
+    port: 587
+    authentication: :plain
+    domain: 'gmail.com'
+    user_name: 'server@email.com'
+    password: 'xxxxxx'
+  upload_image_extension: ['jpg','jpeg', 'gif', 'png']
+  upload_video_extension: ['mp4']
+  upload_audio_extension: ['mp3']
+ 
+development:
+  <<: *defaults
+ 
+test:
+  <<: *defaults
+ 
+production:
+  <<: *defaults

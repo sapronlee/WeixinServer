@@ -1,0 +1,32 @@
+#sidebar.fixed
+  #sidebar-shortcuts
+  ul#sidebar-nav.nav.nav-list
+    /! home
+    li.accordion-group class="#{active_page(%w(home))}"
+      a.accordion-toggle href="#{root_path}" data-parent="#sidebar-nav"
+        i.icon-home.icon-large
+        span.l-padding-10 = t("breadcrumbs.home.index")
+    
+    /! weixin
+    li.accordion-group class="#{active_page %w(accounts messages replies users), value: 'active open'}"
+      a.accordion-toggle href="#weixins" data-parent="#sidebar-nav" data-toggle="collapse"
+        i.icon-comments.icon-large
+        span.l-padding-10 = t("breadcrumbs.weixin.application.index")
+        b.arrow.icon-angle-down
+      ul#weixins.submenu.collapse class="#{active_page %w(accounts messages replies users), value: 'in'}"
+        li class="#{active_page %w(accounts), namespace: 'admin/weixin'}"
+          = link_to root_path do
+            i.icon-double-angle-right
+            span.l-padding-10 = t("breadcrumbs.weixin.accounts.index")
+        li class="#{active_page %w(messages), namespace: 'admin/weixin'}"
+          = link_to root_path do
+            i.icon-double-angle-right
+            span.l-padding-10 = t("breadcrumbs.weixin.messages.index")
+        li class="#{active_page %w(replies), namespace: 'admin/weixin'}"
+          = link_to root_path do
+            i.icon-double-angle-right
+            span.l-padding-10 = t("breadcrumbs.weixin.replies.index")
+        li class="#{active_page %w(users), namespace: 'admin/weixin'}"
+          = link_to root_path do
+            i.icon-double-angle-right
+            span.l-padding-10 = t("breadcrumbs.weixin.users.index")

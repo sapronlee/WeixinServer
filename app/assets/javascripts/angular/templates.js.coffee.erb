@@ -1,0 +1,5 @@
+angular.module('weixin.templates', []).run ["$templateCache", ($templateCache)->
+  <% Dir.glob(Rails.root.join('app','assets','templates', '*/*.slim')).each do |f| %>
+    $templateCache.put("<%= f.gsub(/.*templates\//, '').gsub(/\.slim$/, '') %>", <%= Slim::Template.new(f).render.to_json %>)
+  <% end %>
+]

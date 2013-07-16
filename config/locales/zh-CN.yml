@@ -1,0 +1,83 @@
+'zh-CN':
+  breadcrumbs:
+    application:
+      index: '微信平台'
+    home:
+      index: '首页'
+    weixin:
+      application:
+        index: '微信'
+    accounts:
+      index: '微信帐号'
+      new: '添加帐号'
+  
+  views:
+    user:
+      setting: '设置'
+      logout: '退出'
+    login:
+      title: 'Please Enter Your Information'
+      email: '邮箱'
+      password: '密码'
+      captcha: '验证码'
+      remember_me: ' 记住我'
+      login: '登录'
+      forgot_password: '忘记密码'
+      disable: '请稍候...'
+    forgot:
+      title: 'Retrieve Password'
+      email: '邮箱'
+      send: '发送邮件'
+      login: '返回登录'
+      desc: '输入你注册时使用的邮箱。'
+      disable: '请稍候...'
+    reset:
+      title: 'Reset Password'
+      desc: '请填写你要修改的新密码。'
+      password: '新密码'
+      password_confirmation: '重复密码'
+      send: '修改密码'
+      disable: '请稍候...'
+    buttons:
+      actions: '操作'
+      back: '返回列表'
+      submit: '提交保存'
+      reset: '重置表单'
+      cancel: '取消'
+    accounts:
+      empty: '你还没有添加微信帐号，赶快添加吧！'
+      add_limit: '你还能添加个 %{limit} 微信帐号！'
+      create_success: '你已经成功添加微信帐号，赶快激活它吧！'
+      
+  errors:
+    messages:
+      wrong_size: "大小错误 (应该是 %{file_size})"
+      size_too_small: "最小不能小于 %{file_size}"
+      size_too_big: "最大不能大于 %{file_size}"
+      validate_server: "操作失败，服务器验证错误。"
+      server_error: "十分抱歉，服务错误，请联系管理员。"
+      
+  mongoid:
+    models:
+      user: '用户'
+      account: '微信帐号'
+    attributes:
+      user:
+        realname: '姓名'
+        email: '邮箱'   
+        avatar: '头像'     
+        password: '密码'
+        current_password: '当前密码'
+        password_confirmation: '重复密码'
+        reset_password_token: '密钥'
+        created_at: '创建时间'
+        last_sign_in_at: '最后登录时间'
+        last_sign_in_ip: '最后登录IP'
+      account:
+        name: '名称'
+        en_name: '微信号'
+        token: 'token'
+        identifier: '标识符'
+        desc: '介绍'
+        avatar: '头像'
+        qr_code: '二维码'
