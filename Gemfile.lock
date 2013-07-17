@@ -211,6 +211,8 @@ GEM
       redis (>= 2.1.1)
     redis-store (1.0.0.1)
       redis (~> 2.2.1)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rmagick (2.13.2)
     rspec-core (2.14.3)
     rspec-expectations (2.14.0)
@@ -309,6 +311,7 @@ DEPENDENCIES
   redis-namespace
   redis-objects
   redis-store (~> 1.0.0)
+  rest-client (~> 1.6.7)
   sass-rails (~> 3.2.3)
   settingslogic
   simple_form
