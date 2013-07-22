@@ -25,7 +25,11 @@ class Account
   uploader :avatar,   WeiXinAvatarUploader
   uploader :qr_code,  WeiXinQrCodeUploader
 
+  #Validates
+  validate :create_amount, on: :create
+
   has_many :members
+  belongs_to :company
 
   before_create :generate_token_and_identifier
 
@@ -43,6 +47,12 @@ class Account
 
   def build_identifier
     en_name
+  end
+
+  def create_amount
+    if self.company.accounts.count >= self.company.weixin_count
+      errors.add(:company, "can't create new account.")
+    end
   end
 
 end
