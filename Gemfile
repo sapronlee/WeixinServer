@@ -31,6 +31,8 @@ gem 'devise'
 
 # Simple Form
 gem 'simple_form'
+# Simple Enum
+gem 'simple_enum'
 
 # Configs
 gem 'settingslogic'
@@ -52,8 +54,8 @@ gem 'easy_captcha'
 gem 'kaminari'
 
 # API
-gem 'grape'
-gem 'grape-rabl'
+# gem 'grape'
+# gem 'grape-rabl'
 
 # View Template
 gem 'slim', '~> 1.3.8'

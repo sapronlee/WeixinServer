@@ -2,6 +2,8 @@ class Account
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Uploader
+  include SimpleEnum::Mongoid
+
 
   attr_accessible :name, :en_name, :desc, :avatar, :qr_code
 
@@ -13,6 +15,9 @@ class Account
   # :desc                         功能介绍
   # :avatar                       头像
   # :qr_code                      二维码（由微信生成）
+  # :look                         帐号锁{ on: 1, off: 0 }
+
+  before_create :generate_token_and_identifier
 
   # Fields
   field :name,        type: String
@@ -21,18 +26,18 @@ class Account
   field :identifier,  type: String
   field :desc,        type: String
 
+  # SimpleEnums
+  as_enum :look, { on: 1, off: 0 }, field: { type: Integer, default: 0 }
+
   # Uploaders
   uploader :avatar,   WeiXinAvatarUploader
   uploader :qr_code,  WeiXinQrCodeUploader
 
-  #Validates
-  validate :create_amount, on: :create
-
+  # Relations
   has_many :members
-  belongs_to :company
+  belongs_to :area
 
-  before_create :generate_token_and_identifier
-
+  # Methods
   private
   def generate_token_and_identifier
     if en_name.present?
@@ -47,12 +52,6 @@ class Account
 
   def build_identifier
     en_name
-  end
-
-  def create_amount
-    if self.company.accounts.count >= self.company.weixin_count
-      errors.add(:company, "can't create new account.")
-    end
   end
 
 end
