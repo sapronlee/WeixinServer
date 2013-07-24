@@ -51,10 +51,6 @@ gem 'easy_captcha'
 # Pagination
 gem 'kaminari'
 
-# API
-gem 'grape'
-gem 'grape-rabl'
-
 # View Template
 gem 'slim', '~> 1.3.8'
 gem 'slim-rails', '~> 1.1.1'
