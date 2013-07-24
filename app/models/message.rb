@@ -17,5 +17,4 @@ class Message
   field :create_time,     type: Integer
   field :Content,         type: String
   field :msg_type,        type: String
-
 end

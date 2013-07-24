@@ -34,6 +34,7 @@ class Account
 
   # Relations
   has_many :members
+  belongs_to :company
 
   # Callbacks
   before_create :build_private_token
