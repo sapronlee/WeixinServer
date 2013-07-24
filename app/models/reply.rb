@@ -18,6 +18,4 @@ class Reply
   field :Content,         type: String
   field :msg_type,        type: String
 
-  belongs_to member
-
 end

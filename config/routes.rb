@@ -9,6 +9,9 @@ WeixinServer::Application.routes.draw do
               
   namespace :api, defaults: { format: :json }, constraints: { format: :json } do
     namespace :v1 do
+      resources :accounts, only: [:create, :update, :destroy] do
+        get :status, on: :member
+      end
     end
   end
 end
