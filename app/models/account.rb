@@ -2,32 +2,29 @@ class Account
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Uploader
-  include SimpleEnum::Mongoid
-
+  include Mongoid::CounterCache
 
   attr_accessible :name, :en_name, :desc, :avatar, :qr_code
 
   # Attributes
   # :name                         名称
   # :en_name                      微信号
-  # :token                        微信API Token
+  # :token                        API访问 Token（供微信使用）
+  # :private_token                私有 Token（供客户端使用）
+  # :lock                         锁定（供客户端使用）
   # :identifier                   标识符（由微信返回）
   # :desc                         功能介绍
   # :avatar                       头像
   # :qr_code                      二维码（由微信生成）
-  # :look                         帐号锁{ on: 1, off: 0 }
-
-  before_create :generate_token_and_identifier
 
   # Fields
-  field :name,        type: String
-  field :en_name,     type: String
-  field :token,       type: String
-  field :identifier,  type: String
-  field :desc,        type: String
-
-  # SimpleEnums
-  as_enum :look, { on: 1, off: 0 }, field: { type: Integer, default: 0 }
+  field :name,          type: String
+  field :en_name,       type: String
+  field :token,         type: String
+  field :lock,          type: Boolean, default: true
+  field :private_token, type: String
+  field :identifier,    type: String
+  field :desc,          type: String
 
   # Uploaders
   uploader :avatar,   WeiXinAvatarUploader
@@ -37,8 +34,15 @@ class Account
   has_many :members
   belongs_to :area
 
+  # Callbacks
+  before_create :build_private_token, :generate_token_and_identifier
+
   # Methods
   private
+  def build_private_token
+    self.private_token = "#{SecureRandom.hex(10)}:#{self.id}" if self.private_token.blank?
+  end
+
   def generate_token_and_identifier
     if en_name.present?
       self.token = build_token
@@ -53,5 +57,4 @@ class Account
   def build_identifier
     en_name
   end
-
 end
