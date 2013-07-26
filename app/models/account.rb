@@ -37,6 +37,8 @@ class Account
   # Callbacks
   before_create :build_private_token, :generate_token_and_identifier
 
+  validates :name, :en_name, presence: true, uniqueness: true
+
   # Methods
   private
   def build_private_token

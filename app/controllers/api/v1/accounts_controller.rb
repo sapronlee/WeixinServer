@@ -1,6 +1,6 @@
 class Api::V1::AccountsController < Api::ApplicationController
 
-  before_filter :check_token, only: [:update, :destroy, :status]
+  before_filter :authentication_token, only: [:update, :destroy, :status]
 
   # method: post
   # url: api/v1/account
@@ -8,15 +8,11 @@ class Api::V1::AccountsController < Api::ApplicationController
   # result: message, private_token
   # 创建微信公众帐号
   def create
-    account = Account.new name: params[:name],
-                       en_name: params[:en_name],
-                          desc: params[:desc],
-                        avatar: params[:avatar],
-                       qr_code: params[:qr_code]
-    if account.save
-      render json: "{ \"result\": { \"account\": { \"token\": \"#{account.token}\" } } }"
+    @account = Account.new params[:account]
+    if @account.save
+      respond_with(@account), status: 201
     else
-      render json: "{ \"reuslt\": { \"error\": \"#{account.errors.full_messages.join(',')}\" } }", status: 403
+      render 'error', status: 400
     end
   end
 
@@ -28,15 +24,16 @@ class Api::V1::AccountsController < Api::ApplicationController
 
   # 获取帐号的锁定状态
   def status
-    render json: "{ \"result\": { \"account\": { \"lock\": #{@account.lock} } } }"
+    respond_with(@account), status: 200
   end
 
   private
-  def check_token
+  def authentication_token
     @account = Account.where(private_token: params[:id]).first
     if @account.blank?
-      render json: "{ \"result\": { \"error\": \"token invalid\" } }", status: 403
+      @account = Account.new
+      @account.errors.add(:private_token, "invalid")
+      render 'error', status: 401
     end
   end
-
 end

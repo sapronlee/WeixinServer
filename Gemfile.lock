@@ -35,8 +35,6 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
-    active_model_serializers (0.8.1)
-      activemodel (>= 3.0)
     activemodel (3.2.13)
       activesupport (= 3.2.13)
       builder (~> 3.0.0)
@@ -152,6 +150,9 @@ GEM
       slop (~> 3.0)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
+    rabl-rails (0.3.3)
+      activesupport (~> 3.0)
+      railties (~> 3.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -252,7 +253,6 @@ PLATFORMS
 
 DEPENDENCIES
   ace-theme-rails!
-  active_model_serializers
   angularjs-rails-resource
   better_errors
   bson_ext
@@ -276,6 +276,7 @@ DEPENDENCIES
   pry-rails
   pry-remote
   quiet_assets
+  rabl-rails
   rails (= 3.2.13)
   rails-i18n
   redis-namespace
