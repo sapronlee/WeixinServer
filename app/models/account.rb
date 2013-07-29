@@ -33,23 +33,17 @@ class Account
   belongs_to :area
 
   # Callbacks
-  before_create :build_private_token, :generate_identifier
+  before_create :build_private_token
 
   validates :name, :en_name, presence: true, uniqueness: true
 
   # Methods
+  def update_identifier identifier
+    self.set(:identifier, identifier) if self.identifier.blank?
+  end
+  
   private
   def build_private_token
     self.private_token = "#{SecureRandom.hex(10)}:#{self.id}" if self.private_token.blank?
-  end
-
-  def generate_identifier
-    if en_name.present?
-      self.identifier = build_identifier
-    end
-  end
-
-  def build_identifier
-    en_name
   end
 end

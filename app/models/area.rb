@@ -9,6 +9,7 @@ class Area
   field :name, type: String
 
   # Relations
-  has_many :accounts
+  has_one   :accounts
+  has_many  :reply
 
 end

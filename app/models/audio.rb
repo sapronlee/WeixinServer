@@ -10,6 +10,6 @@ class Audio
   field :desc, type: String
 
   # Uploader
-  uploader_media :file, AudioUploader, size: WebConfig.other_audio_upload_size, presence: false
+  uploader_media :file, AudioUploader, size: Setting.audio_upload_size
 
 end

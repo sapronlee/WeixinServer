@@ -12,7 +12,7 @@ class Article
   field :content, type: String
 
   # Uploaders
-  uploader :picture, ImageUploader
+  uploader :cover, ImageUploader
 
   # Relations
   belongs_to :reply
