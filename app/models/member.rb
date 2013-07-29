@@ -3,13 +3,11 @@ class Member
   include Mongoid::Timestamps
 
   # Attributes
-  # :fans_id       关注者id
+  # :open_id       关注者id
 
   # Fields
-  field :fans_id, type: String
+  field :open_id, type: String
 
-  has_many :messages
-  has_many :replys
   belongs_to :account
 
 end

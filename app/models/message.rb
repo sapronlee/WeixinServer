@@ -1,20 +1,20 @@
 class Message
   include Mongoid::Document
   include Mongoid::Timestamps
+  include SimpleEnum::Mongoid
 
   # Attributes
-  #
-  # :ToUserName     开发者微信号
-  # :FromUserName   发送方帐号
-  # :CreateTime     消息创建时间
-  # :MsgType        类型
-  # :Content        内容
-  # :MsgId          消息id
+  # :create_time     消息创建时间
+  # :msg_type        类型
+  # :content         内容
+  # :msg_id          消息id
 
   # Fields
-  field :to_user_name,    type: String
-  field :from_user_name,  type: String
   field :create_time,     type: Integer
-  field :Content,         type: String
+  field :content,         type: String
   field :msg_type,        type: String
+
+  #Relations
+  belongs_to :member
+
 end

@@ -3,18 +3,25 @@ class Reply
   include Mongoid::Timestamps
 
   # Attributes
-  #
-  # :ToUserName     开发者微信号
-  # :FromUserName   发送方帐号
-  # :CreateTime     消息创建时间
-  # :MsgType        类型
-  # :Content        内容
-  # :MsgId          消息id
+  # :keyword      查询编码
+  # :name         名称
+  # :title        标题
+  # :content      内容[text]
+  # :location     位置
+  # :msg_type     类型
 
   # Fields
-  field :to_user_name,    type: String
-  field :from_user_name,  type: String
-  field :create_time,     type: Integer
-  field :Content,         type: String
-  field :msg_type,        type: String
+  field :keyword, type: String
+  field :name,    type: String
+  field :title,   type: String
+  field :content, type: String
+  field :location type: String
+
+  # SimpleEnums
+  as_enum :msg_type, { text: 0, article: 1, audio: 2 }, field: { type: Integer, default: 0 }
+
+  # Relations
+  has_one :article
+  has_one :audio
+  has_and_belongs_to_many :tags
 end

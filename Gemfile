@@ -33,6 +33,8 @@ gem 'devise'
 
 # Simple Form
 gem 'simple_form'
+# Simple Enums
+gem "simple_enum"
 
 # Configs
 gem 'settingslogic'
