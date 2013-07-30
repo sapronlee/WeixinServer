@@ -7,10 +7,17 @@
     weixin:
       application:
         index: '微信'
+        areas: '区域'
+        accounts: '帐号'
+        messages: '消息'
+        replies: '回复'
+      areas:
+        index: '区域'
+        new: '添加区域'
     accounts:
       index: '微信帐号'
       new: '添加帐号'
-  
+
   views:
     user:
       setting: '设置'
@@ -48,7 +55,7 @@
       empty: '你还没有添加微信帐号，赶快添加吧！'
       add_limit: '你还能添加个 %{limit} 微信帐号！'
       create_success: '你已经成功添加微信帐号，赶快激活它吧！'
-      
+
   errors:
     messages:
       wrong_size: "大小错误 (应该是 %{file_size})"
@@ -56,7 +63,7 @@
       size_too_big: "最大不能大于 %{file_size}"
       validate_server: "操作失败，服务器验证错误。"
       server_error: "十分抱歉，服务错误，请联系管理员。"
-      
+
   mongoid:
     models:
       user: '用户'
@@ -64,8 +71,8 @@
     attributes:
       user:
         realname: '姓名'
-        email: '邮箱'   
-        avatar: '头像'     
+        email: '邮箱'
+        avatar: '头像'
         password: '密码'
         current_password: '当前密码'
         password_confirmation: '重复密码'
