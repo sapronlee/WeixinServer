@@ -14,4 +14,10 @@ WeixinServer::Application.routes.draw do
     end
   end
 
+  namespace :weixin do
+    resources :areas do
+      get :list, on: :collection
+    end
+  end
+
 end
