@@ -18,6 +18,7 @@ WeixinServer::Application.routes.draw do
     resources :areas do
       get :list, on: :collection
     end
+    resources :accounts, only: [:index, :destroy]
   end
 
 end

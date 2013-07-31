@@ -8,25 +8,25 @@
         span.l-padding-10 = t("breadcrumbs.home.index")
 
     /! weixin
-    li.accordion-group class="#{active_page %w(areas accounts messages replies users), value: 'active open'}"
+    li.accordion-group class="#{active_page %w(areas accounts messages replies users), namespace: 'weixin', value: 'active open'}"
       a.accordion-toggle href="#weixins" data-parent="#sidebar-nav" data-toggle="collapse"
         i.icon-comments.icon-large
         span.l-padding-10 = t("breadcrumbs.weixin.application.index")
         b.arrow.icon-angle-down
-      ul#weixins.submenu.collapse class="#{active_page %w(areas accounts messages replies users), value: 'in'}"
-        li class="#{active_page %w(areas), namespace: 'admin/weixin'}"
+      ul#weixins.submenu.collapse class="#{active_page %w(areas accounts messages replies users), namespace: 'weixin', value: 'in'}"
+        li class="#{active_page %w(areas), namespace: 'weixin'}"
           = link_to weixin_areas_path do
             i.icon-double-angle-right
             span.l-padding-10 = t("breadcrumbs.weixin.application.areas")
-        li class="#{active_page %w(accounts), namespace: 'admin/weixin'}"
-          = link_to root_path do
+        li class="#{active_page %w(accounts), namespace: 'weixin'}"
+          = link_to weixin_accounts_path do
             i.icon-double-angle-right
             span.l-padding-10 = t("breadcrumbs.weixin.application.accounts")
-        li class="#{active_page %w(messages), namespace: 'admin/weixin'}"
+        li class="#{active_page %w(messages), namespace: 'weixin'}"
           = link_to root_path do
             i.icon-double-angle-right
             span.l-padding-10 = t("breadcrumbs.weixin.application.messages")
-        li class="#{active_page %w(replies), namespace: 'admin/weixin'}"
+        li class="#{active_page %w(replies), namespace: 'weixin'}"
           = link_to root_path do
             i.icon-double-angle-right
             span.l-padding-10 = t("breadcrumbs.weixin.application.replies")

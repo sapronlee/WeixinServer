@@ -71,5 +71,6 @@ group :test, :development do
   gem 'pry-nav'
   gem 'pry-remote'
   gem 'pry-rails'
-  gem "rest-client", "~> 1.6.7"
+  gem 'rest-client', '~> 1.6.7'
+  gem 'request-log-analyzer'
 end

@@ -1,0 +1,2 @@
+module Weixin::AccountsHelper
+end
