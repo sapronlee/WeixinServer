@@ -4,7 +4,7 @@ html lang="zh-cn" ng-app='weixin'
     meta charset="utf-8"
     meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
-    meta name="description" content="This is WeiXin Admin"
+    meta name="description" content="#{Setting.app_name_locale}"
     title = content_for?(:title) ? yield(:title) : Setting.app_name_locale
     = csrf_meta_tags
     
@@ -18,35 +18,52 @@ html lang="zh-cn" ng-app='weixin'
     /[if IE 7]
       = stylesheet_link_tag 'font-awesome-ie7'
     
-  body.navbar-fixed id="#{controller_name}"
-    .navbar.navbar-inverse.navbar-fixed-top
+  body.navbar-fixed
+    .navbar.navbar-fixed-top
       .navbar-inner
-        .container-fluid
-          = link_to root_path, class: "brand" do
-            small
-              i.icon-comments
-              span = Setting.app_name_locale
-          ul.nav.ace-nav.pull-right
-            li.light-blue.user-profile
-              = link_to "#", class: "user-menu dropdown-toggle", data: { toggle: "dropdown" } do
-                = image_tag "avatars/avatar.png", class: "nav-user-photo"
-                span.user_info
-                  small = current_user.email
-                i.icon-caret-down
-              ul.pull-right.dropdown-menu.dropdown-yellow.dropdown-caret.dropdown-closer#user-menu
-                li = link_to "#" do
-                  i.icon-cog.icon-large
-                  span = t("views.user.setting")
-                li.divider
-                li = link_to destroy_user_session_path, method: :delete do
-                  i.icon-signout.icon-large
-                  span = t("views.user.logout")
-    #main-container.container-fluid
-      = render "shared/sidebar"
-      #main-content.clearfix
-        #breadcrumbs
-          = render_breadcrumbs
-        #page-content.clearfix
+        .container
+          a.btn.btn-navbar data-toggle='collapse' data-target='.nav-collapse'
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          = link_to root_path, class: 'brand' do
+            i.icon-comments
+            span = Setting.app_name_locale
+          .nav-collapse.collapse.navbar-responsive-collapse
+            ul.nav
+              li class="#{active_page %w(home), value: 'active'}"
+                = link_to t('breadcrumbs.home.index'), root_path
+              li.dropdown class="#{active_page %w(accounts), namespace: 'weixin', value: 'active'}"
+                a.dropdown-toggle href='#' data-toggle='dropdown'
+                  span.title.r-padding-5 = t('breadcrumbs.weixin.application.index')
+                  b.caret
+                ul.dropdown-menu.dropdown-yellow.dropdown-caret.dropdown-closer
+                  li = link_to t('breadcrumbs.weixin.areas.index'), weixin_areas_path
+                  li = link_to t('breadcrumbs.weixin.accounts.index'), weixin_accounts_path
+                  li = link_to t('breadcrumbs.weixin.messages.index'), root_path
+                  li = link_to t('breadcrumbs.weixin.replies.index'), root_path
+            ul.nav.ace-nav.pull-right
+              li.light-blue.user-profile
+                = link_to '#', class: 'user-menu dropdown-toggle', data: { toggle: 'dropdown' } do
+                  = image_tag 'avatars/avatar.png', class: 'nav-user-photo'
+                  span.user_info
+                    small = current_user.email
+                  i.icon-caret-down
+                ul.pull-right.dropdown-menu.dropdown-yellow.dropdown-caret.dropdown-closer#user-menu
+                  li = link_to '#' do
+                    i.icon-cog.icon-large
+                    span = t('views.user.setting')
+                  li.divider
+                  li = link_to destroy_user_session_path, method: :delete do
+                    i.icon-signout.icon-large
+                    span = t('views.user.logout')
+    .container
+      .row-fluid
+        .span12
+          #breadcrumbs.margin-top
+            = render_breadcrumbs
+      .row-fluid.t-margin-20
+        .span12
           = yield
       
     = javascript_include_tag :application, :angular
