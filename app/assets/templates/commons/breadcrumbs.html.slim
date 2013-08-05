@@ -1,0 +1,10 @@
+#breadcrumbs.margin-top
+  ul.breadcrumb
+    li.home.r-margin-0
+      i.icon-home
+      span.l-margin-20 = t('breadcrumbs.application.index')
+      span.divider: i.icon-chevron-right
+    li ng-repeat='breadcrumb in breadcrumbs' ng-class="{'active': {{$last}}}"
+      a href='{{breadcrumb.path}}' {{breadcrumb.name}}
+      span.divider: i.icon-chevron-right ng-show='!$last'
+        

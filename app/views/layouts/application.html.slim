@@ -18,8 +18,8 @@ html lang="zh-cn" ng-app='weixin'
     /[if IE 7]
       = stylesheet_link_tag 'font-awesome-ie7'
     
-  body.navbar-fixed
-    .navbar.navbar-fixed-top
+  body.navbar-fixed ng-controller='MainController'
+    .navbar.navbar-fixed-top bs-navbar=''
       .navbar-inner
         .container
           a.btn.btn-navbar data-toggle='collapse' data-target='.nav-collapse'
@@ -31,17 +31,19 @@ html lang="zh-cn" ng-app='weixin'
             span = Setting.app_name_locale
           .nav-collapse.collapse.navbar-responsive-collapse
             ul.nav
-              li class="#{active_page %w(home), value: 'active'}"
-                = link_to t('breadcrumbs.home.index'), root_path
-              li.dropdown class="#{active_page %w(accounts), namespace: 'weixin', value: 'active'}"
+              li.active data-match-route='/' = link_to t('breadcrumbs.home.index'), root_path
+              li.dropdown data-match-route='/weixin/.*'
                 a.dropdown-toggle href='#' data-toggle='dropdown'
                   span.title.r-padding-5 = t('breadcrumbs.weixin.application.index')
                   b.caret
                 ul.dropdown-menu.dropdown-yellow.dropdown-caret.dropdown-closer
-                  li = link_to t('breadcrumbs.weixin.areas.index'), weixin_areas_path
-                  li = link_to t('breadcrumbs.weixin.accounts.index'), weixin_accounts_path
-                  li = link_to t('breadcrumbs.weixin.messages.index'), root_path
-                  li = link_to t('breadcrumbs.weixin.replies.index'), root_path
+                  li = link_to t('breadcrumbs.weixin.areas.index'), '#'
+                  li.divider
+                  li = link_to t('breadcrumbs.weixin.accounts.index'), '#'
+                  li.divider
+                  li = link_to t('breadcrumbs.weixin.messages.index'), '#'
+                  li.divider
+                  li = link_to t('breadcrumbs.weixin.replies.index'), '/#/weixin/replies'
             ul.nav.ace-nav.pull-right
               li.light-blue.user-profile
                 = link_to '#', class: 'user-menu dropdown-toggle', data: { toggle: 'dropdown' } do
@@ -60,11 +62,10 @@ html lang="zh-cn" ng-app='weixin'
     .container
       .row-fluid
         .span12
-          #breadcrumbs.margin-top
-            = render_breadcrumbs
+          lb-breadcrumbs
       .row-fluid.t-margin-20
         .span12
-          = yield
+          ng-view
       
     = javascript_include_tag :application, :angular
     = content_for :scripts

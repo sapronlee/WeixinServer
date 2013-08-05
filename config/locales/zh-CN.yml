@@ -17,6 +17,9 @@
       accounts:
         index: '帐号'
         destroy: '删除帐号'
+      replies:
+        index: '回复'
+        new: '添加新回复'
 
   views:
     user:

@@ -1,11 +1,11 @@
 WeixinServer::Application.routes.draw do
-  captcha_route
-  root to: 'home#index'
-
+  
+  # devise routes
   devise_for :users, skip: [:registrations],
               path_names: { sign_in: :login, sign_out: :logout, password: :secret },
               controllers: { sessions: 'users/sessions', passwords: 'users/passwords' }
 
+  # api routes
   namespace :api, defaults: { format: :json }, constraints: { format: :json } do
     namespace :v1 do
       resources :accounts, only: [:create, :update, :destroy] do
@@ -13,12 +13,16 @@ WeixinServer::Application.routes.draw do
       end
     end
   end
-
-  namespace :weixin do
-    resources :areas do
-      get :list, on: :collection
+  
+  # angular services routes
+  namespace :services, defaults: { format: :json }, constraints: { format: :json } do
+    namespace :weixin do
+      resources :replies, only: [:index, :create, :update, :destroy]
     end
-    resources :accounts, only: [:index, :destroy]
   end
+
+  # normal routes
+  captcha_route
+  root to: 'home#index'
 
 end

@@ -33,7 +33,7 @@ module Mongoid
         
         def query_filter
           result = []
-          @filter.map { |k, v| result << Hash[k.to_s.underscore.to_sym, Regexp.new(".*#{v}.*")] }
+          @filter.map { |k, v| result << Hash[k.to_s.underscore.to_sym, Regexp.new(".*#{URI.decode(v)}.*")] }
           result
         end
         
