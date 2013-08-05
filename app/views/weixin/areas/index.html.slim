@@ -1,0 +1,23 @@
+.row-fluid ng-controller="areasController" ng-init="init()"
+  .span12
+    div loading-container="loading"
+      .area-list
+        .widget-box.transparent
+          .widget-body
+            .widget-toolbox.padding-8
+              .btn-toolbar
+                .btn-group
+                  a.btn.btn-success.btn-small href="#areas/new"
+                    i.icon-file-text
+                    span.l-padding-5 = t("breadcrumbs.weixin.areas.new")
+            .widget-main
+              alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)" {{alert.message}}
+              table.table.table-striped.table-bordered.table-hover ng-table="tableParams" show-filter="true"
+                tr ng-repeat="area in areas"
+                  td title="'#{Area.human_attribute_name :name}'" sortable="name" filter="{'name': 'text'}"
+                    | {{area.name}}
+                  td.date title="'#{Area.human_attribute_name :created_at}'" sortable="created_at" filter="{'created_at': 'text'}"
+                    | {{area.createdAt}}
+                  td.actions title="'#{t("views.buttons.actions")}'" filter="{'action': 'button'}"
+                    a href="#areas/{{area.id}}/edit"
+                      i.icon-pencil

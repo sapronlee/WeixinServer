@@ -1,6 +1,8 @@
 class Area
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::BaseModel
+  include Mongoid::DataTable
 
   # Attributes
   # :name      名称

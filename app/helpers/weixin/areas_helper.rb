@@ -1,0 +1,2 @@
+module Weixin::AreasHelper
+end

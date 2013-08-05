@@ -83,6 +83,9 @@
         created_at: '创建时间'
         last_sign_in_at: '最后登录时间'
         last_sign_in_ip: '最后登录IP'
+      area:
+        name: '名称'
+        created_at: '创建时间'
       account:
         name: '名称'
         en_name: '微信号'

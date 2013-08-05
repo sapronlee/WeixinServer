@@ -1,4 +1,6 @@
 WeixinServer::Application.routes.draw do
+  get "areas/index"
+
   captcha_route
   root to: 'home#index'
 
