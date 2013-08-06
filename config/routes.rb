@@ -18,7 +18,8 @@ WeixinServer::Application.routes.draw do
 
   namespace :weixin do
     resources :areas do
-      get :list, on: :collection
+      get :list,       on: :collection
+      get :check_name, on: :collection
     end
     resources :accounts, only: [:index, :destroy]
   end

@@ -14,4 +14,7 @@ class Area
   has_one   :accounts
   has_many  :reply
 
+  # Validates
+  validates :name, presence: true, uniqueness: true
+
 end

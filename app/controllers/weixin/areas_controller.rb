@@ -27,6 +27,11 @@ class Weixin::AreasController < ActionController::Base
     end
   end
 
+  def check_name
+    @area = Area.where(name: params[:name]).first
+    render json: { result: @area.present? }
+  end
+
   private
   def find_area
     @area = Area.where(id: params[:id]).first

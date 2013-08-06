@@ -19,13 +19,14 @@
                     abbr.l-margin-5 title="required" *
                   .controls
                     span.input-icon.input-icon-right
-                      input#area_name.input-xlarge type="text" name="name" required="" ng-minlength="2" ng-maxlength="10" ng-model="area.name"
+                      input#area_name.input-xlarge type="text" name="name" required="" ng-minlength="2" ng-maxlength="10" ng-model="area.name" ng-blur="checkName(form)" ng-change="changeName(form)"
                       i.icon-remove-sign ng-show="form.name.$dirty && form.name.$invalid"
                       i.icon-ok-sign ng-show="form.name.$dirty && form.name.$valid"
                     .help-block ng-show="form.name.$dirty && form.name.$invalid"
                       span ng-show="form.name.$error.required" = t("errors.messages.blank")
                       span ng-show="form.name.$error.minlength" = t("errors.messages.too_short", count: 2)
                       span ng-show="form.name.$error.maxlength" = t("errors.messages.too_long", count: 10)
+                      span ng-show="form.name.$error.unique" = t("errors.messages.unique_error")
 
             .row-fliud
               .span12

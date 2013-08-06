@@ -63,4 +63,14 @@ weixinController.controller 'areasController', ['$scope', 'Area', 'ngTableParams
 
   $scope.closeAlert = (index)->
     $scope.alerts.splice(index, 1)
+
+  $scope.checkName = (form)->
+    if form.$valid && form.$dirty
+      Area.unique(form.name.$viewValue).then(
+        (data)->
+          form.name.$setValidity 'unique', !data.result
+      )
+
+  $scope.changeName = (form)->
+    form.name.$setValidity 'unique', true
 ]

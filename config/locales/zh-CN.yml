@@ -66,6 +66,7 @@
       size_too_big: "最大不能大于 %{file_size}"
       validate_server: "操作失败，服务器验证错误。"
       server_error: "十分抱歉，服务错误，请联系管理员。"
+      unique_error: "该名称已经存在，请更换！"
 
   mongoid:
     models:
