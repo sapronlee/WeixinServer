@@ -12,13 +12,12 @@ gem 'quiet_assets'
 gem 'rails-i18n'
 gem 'i18n-js', git: 'https://github.com/fnando/i18n-js.git'
 gem 'thin'
-# gem 'active_model_serializers'
 gem 'mini_magick'
 gem "mime-types", "~> 1.23"
 gem 'streamio-ffmpeg'
 gem 'bson_ext'
 
-gem "rabl-rails"
+gem 'rabl'
 
 # Mongoid
 gem 'mongoid', '~> 3.0.0'

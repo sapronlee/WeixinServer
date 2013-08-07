@@ -1,6 +1,7 @@
 class Article
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Uploader
 
   # Atrributes
   # :picture

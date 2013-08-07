@@ -1,4 +1,12 @@
-weixinController.controller 'areasController', ['$scope', 'Area', 'ngTableParams', '$routeParams', ($scope, Area, ngTableParams, $routeParams)->
+weixinController.controller 'WeixinAreasController', ['$scope', 'Area', 'ngTableParams', '$routeParams', 'BreadCrumbsService', '$dialog', ($scope, Area, ngTableParams, $routeParams, BreadCrumbsService, $dialog)->
+  # 设置Breadcrumbs
+  BreadCrumbsService.add
+    name: I18n.t('breadcrumbs.weixin.application.index')
+    path: '/'
+  BreadCrumbsService.add
+    name: I18n.t('breadcrumbs.weixin.areas.index')
+    path: '/#/weixin/areas'
+
   $scope.area = new Area
   $scope.alerts = []
   $scope.isNewArea = false
@@ -14,8 +22,8 @@ weixinController.controller 'areasController', ['$scope', 'Area', 'ngTableParams
       Area.query(params.url()).then(
         (data)->
           $scope.loading = false
-          $scope.areas = data.results
-          $scope.tableParams.total = data.meta.total
+          $scope.areas = data.result.areas
+          $scope.tableParams.total = data.result.areas_count
         (error)->
       )
 
@@ -40,17 +48,7 @@ weixinController.controller 'areasController', ['$scope', 'Area', 'ngTableParams
     if form.$valid
       $scope.area.create().then(
         (data)->
-          # $scope.areas.unshift(
-          #   new Area
-          #     id: data.result.id
-          #     name: data.result.name
-          #     createAt: data.result.createAt
-          # )
-          # $scope.alerts.push
-          #   type: 'Success: '
-          #   message: 'Add a Area Success!'
-          # $scope.back()
-          window.location = '#areas'
+          window.location = '#weixin/areas'
         (error)->
       )
 
@@ -58,7 +56,7 @@ weixinController.controller 'areasController', ['$scope', 'Area', 'ngTableParams
     if form.$valid
       $scope.area.update().then(
         (data)->
-          window.location = '#areas'
+          window.location = '#weixin/areas'
       )
 
   $scope.closeAlert = (index)->
@@ -73,4 +71,19 @@ weixinController.controller 'areasController', ['$scope', 'Area', 'ngTableParams
 
   $scope.changeName = (form)->
     form.name.$setValidity 'unique', true
+
+  $scope.openMessageBox = (id)->
+    title = 'Destory';
+    msg = 'desoty area: '+ name + '?';
+    btns = [{result: false, label: 'Cancel'}, {result: true, label: 'OK', cssClass: 'btn-primary'}];
+    $dialog.messageBox(title, msg, btns)
+      .open()
+        .then((result)->
+          if result == true
+            new Area($scope.areas[id]).delete().then(
+              (data)->
+                if data.result = true
+                  $scope.init()
+            )
+        );
 ]

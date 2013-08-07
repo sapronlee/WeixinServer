@@ -1,6 +1,7 @@
 class Audio
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Uploader
 
   # Attributes
   # :desc       描述

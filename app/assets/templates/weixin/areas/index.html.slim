@@ -1,4 +1,4 @@
-.row-fluid ng-controller="areasController" ng-init="init()"
+.row-fluid ng-init="init()"
   .span12
     div loading-container="loading"
       .area-list
@@ -7,7 +7,7 @@
             .widget-toolbox.padding-8
               .btn-toolbar
                 .btn-group
-                  a.btn.btn-success.btn-small href="#areas/new"
+                  a.btn.btn-success.btn-small href="#/weixin/areas/new"
                     i.icon-file-text
                     span.l-padding-5 = t("breadcrumbs.weixin.areas.new")
             .widget-main
@@ -19,5 +19,7 @@
                   td.date title="'#{Area.human_attribute_name :created_at}'" sortable="created_at" filter="{'created_at': 'text'}"
                     | {{area.createdAt}}
                   td.actions title="'#{t("views.buttons.actions")}'" filter="{'action': 'button'}"
-                    a href="#areas/{{area.id}}/edit"
+                    a href="#weixin/areas/{{area.id}}/edit"
                       i.icon-pencil
+                    a href="#weixin/areas" ng-click="openMessageBox({{$index}})" ng-model="area.name"
+                      i.icon-trash

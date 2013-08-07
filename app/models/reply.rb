@@ -1,12 +1,13 @@
 class Reply
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::DataTable
   include SimpleEnum::Mongoid
 
   # Attributes
   # :number      查询编码
-  # :name         名称
-  # :title        标题
+  # :name         名称（列表菜单使用）
+  # :title        标题（微信使用）
   # :content      内容[text]
   # :location     位置
   # :msg_type     类型
