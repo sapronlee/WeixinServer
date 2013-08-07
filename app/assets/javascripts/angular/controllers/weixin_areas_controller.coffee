@@ -74,7 +74,7 @@ weixinController.controller 'WeixinAreasController', ['$scope', 'Area', 'ngTable
 
   $scope.openMessageBox = (id)->
     title = 'Destory';
-    msg = 'desoty area: '+ name + '?';
+    msg = 'desoty area: '+ $scope.areas[id].name + '?';
     btns = [{result: false, label: 'Cancel'}, {result: true, label: 'OK', cssClass: 'btn-primary'}];
     $dialog.messageBox(title, msg, btns)
       .open()
