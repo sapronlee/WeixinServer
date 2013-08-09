@@ -34,6 +34,9 @@ window.weixin.config ['$routeProvider', '$locationProvider', ($routeProvider, $l
   .when '/weixin/areas/:areaId/edit',
     templateUrl: '<%= asset_path("weixin/areas/edit.html") %>',
     controller: 'WeixinAreasController'
+  .when '/weixin/messages',
+    templateUrl: '<%= asset_path("weixin/messages/index.html") %>',
+    controller: 'WeixinMessagesController'
   .when '/weixin/replies',
     templateUrl: '<%= asset_path("weixin/replies/index.html") %>',
     controller: 'WeixinRepliesController'

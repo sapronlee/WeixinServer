@@ -21,6 +21,7 @@ WeixinServer::Application.routes.draw do
       resources :areas, only: [:index, :create, :update, :edit, :destroy] do
         get :check_name, on: :collection
       end
+      resources :messages
     end
   end
 

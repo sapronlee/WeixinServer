@@ -92,6 +92,11 @@
       area:
         name: '名称'
         created_at: '创建时间'
+      message:
+        name: '微信名称'
+        msg_type: '消息类型'
+        content: '内容'
+        created_at: '创建时间'
       account:
         name: '名称'
         en_name: '微信号'
@@ -102,3 +107,12 @@
         qr_code: '二维码'
         domain: '域名'
         ip: 'IP'
+
+  enums:
+    message:
+      msg_type:
+        text: '文本'
+        link: '链接'
+        image: '图片'
+        music: '音频'
+        location: '地理位置'

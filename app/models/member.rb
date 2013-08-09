@@ -9,5 +9,6 @@ class Member
   field :open_id, type: String
 
   belongs_to :account
+  has_many :messages
 
 end

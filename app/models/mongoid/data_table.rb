@@ -5,7 +5,7 @@ module Mongoid
       def ng_table(params = {})
         NgTable.new(params, self).objects
       end
-      
+
       class NgTable
         def initialize(params, klass)
           @klass = klass
@@ -14,15 +14,15 @@ module Mongoid
           @filter = params[:filter]
           @sort = params[:sorting]
         end
-        
+
         def total_count
           objects.total_count
         end
-        
+
         def objects
           @objects ||= fetch_objects
         end
-        
+
         private
         def fetch_objects
           objects = @filter.present? ? @klass.and(query_filter) : @klass
@@ -30,19 +30,21 @@ module Mongoid
           objects = objects.page(@page).per(@page_size)
           objects
         end
-        
+
         def query_filter
           result = []
-          @filter.map { |k, v| result << Hash[k.to_s.underscore.to_sym, Regexp.new(".*#{URI.decode(v)}.*")] }
+          @filter.map do |k, v|
+            result << Hash[k.to_s.underscore.to_sym, (k =~ /.*?_cd/) == 0 ? URI.decode(v) : Regexp.new(".*#{URI.decode(v)}.*")]
+          end
           result
         end
-        
+
         def query_sort
           @sort.map { |k, v| "#{k} #{v.upcase}" }.first
         end
-        
+
       end
-      
+
     end
   end
 end

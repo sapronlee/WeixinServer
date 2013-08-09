@@ -1,0 +1,20 @@
+.row-fluid ng-init="init()"
+  .span12
+    div loading-container="loading"
+      .message-list
+        .widget-box.transparent
+            .widget-main
+              alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)" {{alert.message}}
+              table.table.table-striped.table-bordered.table-hover ng-table="tableParams" show-filter="true"
+                tr ng-repeat="message in messages"
+                  td title="'#{Message.human_attribute_name :name}'" sortable="content"
+                    | {{message.name}}
+                  td title="'#{Message.human_attribute_name :msg_type}'" sortable="msg_type" filter="{'msg_type_cd': 'select'}" filter-data="types()"
+                    | {{message.msgtype}}
+                  td title="'#{Message.human_attribute_name :content}'" sortable="content" filter="{'content': 'text'}"
+                    | {{message.content}}
+                  td.date title="'#{Message.human_attribute_name :created_at}'" sortable="created_at" filter="{'created_at': 'text'}"
+                    | {{message.createdAt}}
+                  td.actions title="'#{t("views.buttons.actions")}'" filter="{'action': 'button'}"
+                    a href="#"
+                      i.icon-pencil
