@@ -11,7 +11,7 @@
                     i.icon-file-text
                     span.l-padding-5 = t("breadcrumbs.weixin.areas.new")
             .widget-main
-              alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)" {{alert.message}}
+              alert dialogAlert='' ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)" {{alert.message}}
               table.table.table-striped.table-bordered.table-hover ng-table="tableParams" show-filter="true"
                 tr ng-repeat="area in areas"
                   td title="'#{Area.human_attribute_name :name}'" sortable="name" filter="{'name': 'text'}"

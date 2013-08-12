@@ -8,12 +8,13 @@
 # = require angular/libs/ui-utils
 # = require angular/libs/angular-strap
 # = require angular/libs/lb-breadcrumbs
+# = require angular/libs/alerts
 
 # = require angular/services
 # = require angular/controllers
 # = require angular/directives
 
-window.weixin = angular.module('weixin', ['weixin.services', 'weixin.controllers', 'weixin.directives', 'ngTable', 'ui.bootstrap', 'ui.utils', '$strap.directives', 'lbBreadcrumbs'])
+window.weixin = angular.module('weixin', ['weixin.services', 'weixin.controllers', 'weixin.directives', 'ngTable', 'ui.bootstrap', 'ui.utils', '$strap.directives', 'lbBreadcrumbs', 'dialogAlerts'])
 
 window.weixin.config ['$httpProvider', ($httpProvider) ->
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = document.getElementsByName("csrf-token")[0].content

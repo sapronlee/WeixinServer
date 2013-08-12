@@ -1,4 +1,4 @@
-weixinController.controller 'WeixinAreasController', ['$scope', 'Area', 'ngTableParams', '$routeParams', 'BreadCrumbsService', '$dialog', ($scope, Area, ngTableParams, $routeParams, BreadCrumbsService, $dialog)->
+weixinController.controller 'WeixinAreasController', ['$scope', 'Area', 'ngTableParams', '$routeParams', 'BreadCrumbsService', 'alertService', '$dialog', ($scope, Area, ngTableParams, $routeParams, BreadCrumbsService, alertService, $dialog)->
   # 设置Breadcrumbs
   BreadCrumbsService.add
     name: I18n.t('breadcrumbs.weixin.application.index')
@@ -8,7 +8,6 @@ weixinController.controller 'WeixinAreasController', ['$scope', 'Area', 'ngTable
     path: '/#/weixin/areas'
 
   $scope.area = new Area
-  $scope.alerts = []
   $scope.isNewArea = false
   $scope.isEditArea = false
   $scope.tableParams = new ngTableParams
@@ -48,6 +47,10 @@ weixinController.controller 'WeixinAreasController', ['$scope', 'Area', 'ngTable
     if form.$valid
       $scope.area.create().then(
         (data)->
+          $scope.alerts.push(
+            type: 'success'
+            message: 'Add Area Success!'
+          )
           window.location = '#weixin/areas'
         (error)->
       )
@@ -56,6 +59,10 @@ weixinController.controller 'WeixinAreasController', ['$scope', 'Area', 'ngTable
     if form.$valid
       $scope.area.update().then(
         (data)->
+          $scope.alerts.push(
+            type: 'success'
+            message: 'Add Area Success!'
+          )
           window.location = '#weixin/areas'
       )
 
@@ -83,6 +90,10 @@ weixinController.controller 'WeixinAreasController', ['$scope', 'Area', 'ngTable
             new Area($scope.areas[id]).delete().then(
               (data)->
                 if data.result = true
+                  $scope.alerts.push(
+                    type: 'success'
+                    message: 'Destory Area Success!'
+                  )
                   $scope.init()
             )
         );
