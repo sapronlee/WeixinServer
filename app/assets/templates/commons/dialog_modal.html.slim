@@ -1,0 +1,9 @@
+.modal-header
+  button.close data-dismiss="modal" aria-hidden="true" &times;
+  h3 {{errorTitle}}
+.modal-body
+  ul
+    li ng-repeat="m in errorMessages"
+      h4.red {{m}}
+  
+  

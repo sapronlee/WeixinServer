@@ -1,0 +1,60 @@
+form#musicUpload name="musicForm" data-file-upload="musicUploadOptions" data-ng-controller="MusicUploadController" data-ng-class="{'fileupload-processing': processing() || loadingFiles}"
+  .modal-header
+    button.close data-dismiss="modal" aria-hidden="true" ng-click="modalClose()" &times;
+    h3 = t('views.messages.reply.add_music')
+  .modal-body
+    /! music file
+    .control-group
+      label.control-label.b-margin-10 for="audio_file"
+        = Audio.human_attribute_name :file
+        abbr.l-margin-5 title="required" *
+      .controls
+        .fileupload-buttonbar ng-hide="isAdded"
+          span.btn.btn-success.btn-small.fileinput-button ng-class="{disabled: disabled}"
+            i.icon-plus.icon-white
+            span = t('views.buttons.add_file')
+            input#audio_file type="file" name="file" ng-disabled="disabled"
+    ul.files.unstyled ng-cloak=""
+      li data-ng-repeat="file in queue"
+        /! error
+        .row-fluid data-ng-show="file.error"
+          .span6.t-padding-5
+            span.label.label-important {{file.error}}
+          .span6
+            button.btn.btn-warning.btn-small.cancel data-ng-click="fileCancel(file)" data-ng-hide="!file.$cancel"
+              i.icon-ban-circle.icon-white
+              span = t('views.buttons.cancel')
+        /! vaild
+        .row-fluid.b-margin-10 data-ng-hide="file.error"
+          .span8
+            div data-file-upload-preview="file" tooltip-placement="bottom" tooltip="{{file.size | formatFileSize}}"
+          .span4
+            button.btn.btn-warning.btn-small.cancel data-ng-click="fileCancel(file)" data-ng-hide="!file.$cancel"
+              i.icon-ban-circle.icon-white
+              span = t('views.buttons.cancel')
+        .row-fluid data-ng-hide="file.error"
+          .span12
+            /! title field
+            .control-group ng-class="{'error': musicForm.title.$dirty && musicForm.title.$invalid, 'success': musicForm.title.$dirty && musicForm.title.$valid}"
+              label.control-label for="audio_title"
+                = Audio.human_attribute_name :title
+                abbr.l-margin-5 title="required" *
+              .controls
+                input#audio_title.input-block-level type="text" name="title" required="" ng-model="audio.title"
+                .help-block ng-show="musicForm.title.$dirty && musicForm.title.$invalid"
+                  span ng-show="musicForm.title.$error.required" = t("errors.messages.blank")
+        .row-fluid data-ng-hide="file.error"
+          .span12
+            /! description textarea
+            .control-group ng-class="{'error': musicForm.description.$dirty && musicForm.description.$invalid, 'success': musicForm.description.$dirty && musicForm.description.$valid}"
+              label.control-label for="audio_description"
+                = Audio.human_attribute_name :description
+                abbr.l-margin-5 title="required" *
+              .controls
+                textarea#audio_description.input-block-level rows="4" name="description" required="" ng-model="audio.description"
+                .help-block ng-show="musicForm.description.$dirty && musicForm.description.$invalid"
+                  span ng-show="musicForm.description.$error.required" = t("errors.messages.blank")
+          
+  .modal-footer
+    button.btn.btn-primary.btn-small ng-click="uploadMusic(musicForm)" ng-disabled="showUploadButton(musicForm)" = t('views.buttons.upload_audio')
+  

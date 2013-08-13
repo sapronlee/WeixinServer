@@ -4,4 +4,8 @@ class Services::Weixin::RepliesController < Services::Weixin::ApplicationControl
     @replies = Reply.ng_table params
   end
   
+  def unique_number
+    @reply = Reply.where(area_id: params[:reply][:area_id], number: params[:reply][:number])
+  end
+  
 end

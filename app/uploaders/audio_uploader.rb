@@ -11,7 +11,7 @@ class AudioUploader < BaseUploader
   end
 
   def extension_white_list
-    WebConfig.upload_audio_extension
+    Setting.upload_audio_extension
   end
 
   def store_dir

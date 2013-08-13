@@ -1,11 +1,8 @@
 weixinController.controller 'WeixinRepliesController', ['$scope', 'Reply', 'ngTableParams', 'BreadCrumbsService', ($scope, Reply, ngTableParams, BreadCrumbsService)->
   # 设置Breadcrumbs
   BreadCrumbsService.add
-    name: I18n.t('breadcrumbs.weixin.application.index')
-    path: '/'
-  BreadCrumbsService.add
     name: I18n.t('breadcrumbs.weixin.replies.index')
-    path: '/#/weixin/replies'
+    path: '/weixin/replies'
   
   # 设置局部变量
   $scope.tableParams = new ngTableParams

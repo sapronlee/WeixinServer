@@ -18,7 +18,7 @@ html lang="zh-cn" ng-app='weixin'
     /[if IE 7]
       = stylesheet_link_tag 'font-awesome-ie7'
     
-  body.navbar-fixed ng-controller='MainController'
+  body.navbar-fixed
     .navbar.navbar-fixed-top bs-navbar=''
       .navbar-inner
         .container
@@ -43,7 +43,7 @@ html lang="zh-cn" ng-app='weixin'
                   li.divider
                   li = link_to t('breadcrumbs.weixin.messages.index'), '#'
                   li.divider
-                  li = link_to t('breadcrumbs.weixin.replies.index'), '/#/weixin/replies'
+                  li = link_to t('breadcrumbs.weixin.replies.index'), '/weixin/replies'
             ul.nav.ace-nav.pull-right
               li.light-blue.user-profile
                 = link_to '#', class: 'user-menu dropdown-toggle', data: { toggle: 'dropdown' } do
@@ -65,7 +65,9 @@ html lang="zh-cn" ng-app='weixin'
           lb-breadcrumbs
       .row-fluid.t-margin-20
         .span12
-          ng-view
+          div ng-view='' ng-animate="{enter: 'animate-enter'}"
+      .row-fluid
+        .span12
       
     = javascript_include_tag :application, :angular
     = content_for :scripts

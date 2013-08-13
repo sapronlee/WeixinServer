@@ -1,0 +1,79 @@
+/! create weixin reply template
+/! main
+.row-fluid
+  .span8
+    .widget-box
+      .widget-header.widget-header-blue.widget-header-flat.wi1dget-header-large
+        h5 = t('breadcrumbs.weixin.replies.new')
+      .widget-body
+        .widget-main
+          /! toolbar
+          .btn-toolbar
+            .btn-group
+              a.btn.btn-info href='/weixin/replies' = t('views.buttons.back')
+          /! form
+          form#new-weixin-reply name='form' novalidate=''
+            fieldset
+              .row-fluid
+                .span4
+                  /! area_id select
+                  .control-group ng-class="{'error': form.areaId.$dirty && form.areaId.$invalid, 'success': form.areaId.$dirty && form.areaId.$valid}"
+                    label.control-label for="weixin_reply_areaId"
+                      = Reply.human_attribute_name :area_id
+                      abbr.l-margin-5 title="required" *
+                    .controls
+                      select#weixin_reply_areaId.span12 bs-select="" data-style="btn-info" name="areaId" ng-model="reply.areaId" ng-options="value.id as value.name for (key, value) in areas" required="" ng-change="changeAreaSelect(form)"
+                        option value="" = t('views.messages.place_chose')
+                      .help-block ng-show="form.areaId.$dirty && form.areaId.$invalid"
+                        span ng-show="form.areaId.$error.required" = t("errors.messages.blank")
+                .span4.offset1 ng-show="!areaInvalid"
+                  /! number field
+                  .control-group ng-class="{'error': form.number.$dirty && form.number.$invalid, 'success': form.number.$dirty && form.number.$valid}"
+                    label.control-label for="weixin_reply_number"
+                      = Reply.human_attribute_name :number
+                    .controls
+                      input#weixin_reply_number.span12 type="text" name="number" ng-pattern="/^[0-9]+$/" ng-blur="checkUniqueNumber(form.number)" ng-change="resetCheckNumber(form.number)" ng-model="reply.number"
+                      .help-block ng-show="form.number.$dirty && form.number.$invalid"
+                        span ng-show="form.number.$error.unique" = t("errors.messages.taken")
+                        span ng-show="form.number.$error.pattern" = t("errors.messages.not_a_number")
+                    
+              /! name field
+              .control-group ng-class="{'error': form.name.$dirty && form.name.$invalid, 'success': form.name.$dirty && form.name.$valid}"
+                label.control-label for="weixin_reply_name"
+                  = Reply.human_attribute_name :name
+                  abbr.l-margin-5 title="required" *
+                .controls
+                  input#weixin_reply_name.span7 type="text" name="name" required="" ng-model="reply.name"
+                  .help-block ng-show="form.name.$dirty && form.name.$invalid"
+                    span ng-show="form.name.$error.required" = t("errors.messages.blank")
+                    
+              /! msg type tabs
+              .control-group
+                label.control-label.b-margin-10
+                  = Reply.human_attribute_name :content
+                  abbr.l-margin-5 title="required" *
+                .controls
+                  .border data-fade="1" ng-model="reply.msgType" bs-tabs=""
+                    div ng-repeat="tab in tabs" data-title="{{tab.title}}"
+                      ng-include src="tab.template"
+                    
+              /! buttons
+              .form-actions
+                button.btn.btn-primary.r-margin-10 type="submit" ng-click="" ng-disabled="form.$invalid"
+                  i.icon-ok.bigger-110
+                  span = t("views.buttons.submit")
+                button.btn.r-margin-10 type="reset"
+                  i.icon-undo.bigger-110
+                  span = t("views.buttons.reset")
+                button.btn ng-click="back()"
+                  i.icon-arrow-left.bigger-110
+                  span = t("views.buttons.back")
+            
+  .span4
+    .widget-box
+      .widget-header.widget-header-small.header-color-orange
+        h6
+          i.icon-exclamation-sign
+          span = t('views.buttons.tips')
+      .widget-body
+        .widget-main

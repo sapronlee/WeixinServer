@@ -1,3 +1,4 @@
+# encoding: utf-8
 WeixinServer::Application.routes.draw do
   
   # devise routes
@@ -17,12 +18,21 @@ WeixinServer::Application.routes.draw do
   # angular services routes
   namespace :services, defaults: { format: :json }, constraints: { format: :json } do
     namespace :weixin do
-      resources :replies, only: [:index, :create, :update, :destroy]
+      resources :replies, only: [:index, :create, :update, :destroy] do
+        post 'unique_number', on: :collection
+      end
+      resources :areas, only: [:index, :create, :update, :destroy] do
+        get :list, on: :collection
+      end
+      resources :audios, only: [:create]
     end
   end
 
   # normal routes
   captcha_route
   root to: 'home#index'
+  
+  # 这句必须放到最末尾
+  match '*path', to: redirect('/')
 
 end
