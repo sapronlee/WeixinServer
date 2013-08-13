@@ -53,9 +53,9 @@
                     var files = data.result && data.result.files;
                     if (files) {
                         data.scope().replace(data.files, files);
-                    } else if (data.errorThrown ||
+                    } else if (data.result.error || data.errorThrown ||
                             data.textStatus === 'error') {
-                        data.files[0].error = data.errorThrown ||
+                        data.files[0].error = data.result.error[0] || data.errorThrown ||
                             data.textStatus;
                     }
                 },
