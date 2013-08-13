@@ -26,6 +26,12 @@ WeixinServer::Application.routes.draw do
       end
       resources :audios, only: [:create]
     end
+    namespace :resources do
+      resources :audios, only: [:index, :create]
+      resources :article_groups, only: [:index] do
+        resources :articles, only: [:create]
+      end
+    end
   end
 
   # normal routes
