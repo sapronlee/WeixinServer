@@ -26,6 +26,6 @@ lbBreadCrumbs.directive 'lbBreadcrumbs', ['$location', 'BreadCrumbsService', ($l
     ($scope, $elem, $attr)->
       $scope.$on 'breadcrumbsRefresh', ()->
         $scope.breadcrumbs = BreadCrumbsService.getAll()
-      $scope.redirectTo= (path)->
+      $scope.redirectTo = (path)->
         $location.path(path)
 ]

@@ -31,7 +31,9 @@ html lang="zh-cn" ng-app='weixin'
             span = Setting.app_name_locale
           .nav-collapse.collapse.navbar-responsive-collapse
             ul.nav
+              /! home
               li.active data-match-route='/' = link_to t('breadcrumbs.home.index'), root_path
+              /! weixin
               li.dropdown data-match-route='/weixin/.*'
                 a.dropdown-toggle href='#' data-toggle='dropdown'
                   span.title.r-padding-5 = t('breadcrumbs.weixin.application.index')
@@ -44,7 +46,17 @@ html lang="zh-cn" ng-app='weixin'
                   li = link_to t('breadcrumbs.weixin.messages.index'), '#'
                   li.divider
                   li = link_to t('breadcrumbs.weixin.replies.index'), '/weixin/replies'
+              /! resources
+              li.dropdown data-match-route='/resources/.*'
+                a.dropdown-toggle href='#' data-toggle='dropdown'
+                  span.title.r-padding-5 = t('breadcrumbs.resources.application.index')
+                  b.caret
+                ul.dropdown-menu.dropdown-yellow.dropdown-caret.dropdown-closer
+                  li = link_to t('breadcrumbs.resources.audios.index'), '/resources/audios'
+                  li.divider
+                  li = link_to t('breadcrumbs.resources.articles.index'), '/resources/articles'
             ul.nav.ace-nav.pull-right
+              /! users
               li.light-blue.user-profile
                 = link_to '#', class: 'user-menu dropdown-toggle', data: { toggle: 'dropdown' } do
                   = image_tag 'avatars/avatar.png', class: 'nav-user-photo'

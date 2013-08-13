@@ -33,6 +33,12 @@ window.weixin.config ['$routeProvider', '$locationProvider', ($routeProvider, $l
   .when '/weixin/replies/new',
     templateUrl: '<%= asset_path("weixin/replies/new.html") %>',
     controller: 'NewWeixinReplyController'
+  .when '/resources/audios',
+    templateUrl: '<%= asset_path("resources/audios/index.html") %>',
+    controller: 'ResourceAudiosController'
+  .when '/resources/articles',
+    templateUrl: '<%= asset_path("resources/articles/index.html") %>',
+    controller: 'ResourceArticlesController'
   .otherwise 
     redirectTo: '/'
 ]

@@ -20,6 +20,17 @@
       replies:
         index: '回复'
         new: '添加新回复'
+    resources:
+      application:
+        index: '资源'
+        audios: '音频'
+        articles: '图文'
+      audios:
+        index: '音频'
+        new: '添加音频'
+      articles:
+        index: '图文'
+        new: '添加图文'
 
   views:
     user:
