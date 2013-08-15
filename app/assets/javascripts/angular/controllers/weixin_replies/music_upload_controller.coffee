@@ -1,4 +1,4 @@
-weixinController.controller 'MusicUploadController', ['$q', '$scope', '$rootScope', 'fileUpload', '$modal', 'Audio', ($q, $scope, $rootScope, fileUpload, $modal, Audio)->
+angular.module('weixin.controllers').controller 'MusicUploadController', ['$q', '$scope', '$rootScope', 'fileUpload', '$modal', 'Audio', ($q, $scope, $rootScope, fileUpload, $modal, Audio)->
   $scope.isAdded = false
   $scope.musicIsValid = false
   $scope.audio = new Audio

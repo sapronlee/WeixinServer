@@ -47,6 +47,7 @@ gem 'redis-store', '~> 1.0.0'
 # CSS and JS
 gem 'ace-theme-rails', path: '/Users/chucklee/Developments/Web/Gems/ace-theme-rails'
 gem 'angularjs-rails-resource'
+gem 'ng-rails-csrf'
 
 # Captcha
 gem 'easy_captcha'

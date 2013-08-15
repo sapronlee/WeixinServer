@@ -131,6 +131,7 @@ GEM
     net-sftp (2.0.5)
       net-ssh (>= 2.0.9)
     net-ssh (2.6.8)
+    ng-rails-csrf (0.1.0)
     origin (1.1.0)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
@@ -272,6 +273,7 @@ DEPENDENCIES
   mongoid (~> 3.0.0)
   mongoid-app_settings
   mongoid_colored_logger
+  ng-rails-csrf
   pry
   pry-doc
   pry-nav

@@ -1,4 +1,4 @@
-weixinController.controller 'NewArticleController', ['$window', '$q', '$scope', 'BreadCrumbsService', 'fileUpload', '$modal', 'Article', 'ArticleCover', ($window, $q, $scope, BreadCrumbsService, fileUpload, $modal, Article, ArticleCover)->
+angular.module('weixin.controllers').controller 'NewArticleController', ['$window', '$q', '$scope', 'BreadCrumbsService', 'fileUpload', '$modal', 'Article', 'ArticleCover', ($window, $q, $scope, BreadCrumbsService, fileUpload, $modal, Article, ArticleCover)->
   # 设置Breadcrumbs
   BreadCrumbsService.add
     name: I18n.t('breadcrumbs.resources.application.index')

@@ -1,4 +1,4 @@
-weixinController.controller 'NewWeixinReplyController', ['$scope', '$q', 'Reply', 'Area', 'BreadCrumbsService', '$modal', ($scope, $q, Reply, Area, BreadCrumbsService, $modal)->
+angular.module('weixin.controllers').controller 'NewWeixinReplyController', ['$scope', '$q', 'Reply', 'Area', 'BreadCrumbsService', '$modal', ($scope, $q, Reply, Area, BreadCrumbsService, $modal)->
   ################################
   # 配置
   ################################
