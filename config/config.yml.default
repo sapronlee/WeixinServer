@@ -1,22 +1,27 @@
 defaults: &defaults
+  # 基本配置
   app_name: 'OneTrip Weixin'
   app_name_locale: '壹旅游微信服务平台'
   domain: '127.0.0.1:3000'
-  upload_url: 'http://127.0.0.1:3000'
   
+  # 邮件配置
   mailer:
     address: 'smtp.gmail.com'
     port: 587
     authentication: :plain
     domain: 'gmail.com'
-    user_name: 'sapronlee@gmail.com'
-    password: 'libogood0724'
+    user_name: 'xxxxxx@gmail.com'
+    password: 'xxxxxx'
     
-  upload_image_extension: ['jpg','jpeg', 'gif', 'png']
+  # 上传文件配置
+  upload_url: 'http://127.0.0.1:3000'
+  # 上传扩展名
+  upload_image_extension: ['jpg', 'jpeg', 'gif', 'png']
   upload_video_extension: ['mp4']
   upload_audio_extension: ['mp3']
-  
-  allow_manage_account_limit: 4
+  # 上传大小
+  audio_upload_size: 20
+  image_upload_size: 10
  
 development:
   <<: *defaults
