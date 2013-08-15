@@ -7,13 +7,9 @@
     weixin:
       application:
         index: '微信'
-        areas: '区域'
         accounts: '帐号'
         messages: '消息'
         replies: '回复'
-      areas:
-        index: '区域'
-        new: '添加区域'
       accounts:
         index: '帐号'
         destroy: '删除帐号'

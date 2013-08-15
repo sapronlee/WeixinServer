@@ -3,26 +3,18 @@ angular.module('weixin').config ['$routeProvider', ($routeProvider) ->
   .when '/',
     templateUrl: '<%= asset_path("home/index.html") %>',
     controller: 'HomeController'
+    
+  .when '/accounts',
+    templateUrl: '<%= asset_path("accounts/index.html") %>',
+    controller: 'AccountsController'
 
-  .when '/weixin/replies',
-    templateUrl: '<%= asset_path("weixin/replies/index.html") %>',
-    controller: 'WeixinRepliesController'
-
-  .when '/weixin/replies/new',
-    templateUrl: '<%= asset_path("weixin/replies/new.html") %>',
-    controller: 'NewWeixinReplyController'
-
-  .when '/resources/audios',
-    templateUrl: '<%= asset_path("resources/audios/index.html") %>',
-    controller: 'AudiosController'
-
-  .when '/resources/articles',
-    templateUrl: '<%= asset_path("resources/articles/index.html") %>',
-    controller: 'ArticlesController'
-
-  .when '/resources/articles/new',
-    templateUrl: '<%= asset_path("resources/articles/new.html") %>',
-    controller: 'NewArticleController'
+  .when '/messages',
+    templateUrl: '<%= asset_path("messages/index.html") %>',
+    controller: 'MessagesController'
+    
+  .when '/replies',
+    templateUrl: '<%= asset_path("replies/index.html") %>',
+    controller: 'RepliesController'
 
   .otherwise 
     redirectTo: '/'
