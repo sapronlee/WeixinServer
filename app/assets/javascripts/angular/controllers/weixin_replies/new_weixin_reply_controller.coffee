@@ -6,10 +6,10 @@ weixinController.controller 'NewWeixinReplyController', ['$scope', '$q', 'Reply'
   # 设置Breadcrumbs
   BreadCrumbsService.add
     name: I18n.t('breadcrumbs.weixin.replies.index')
-    path: '/weixin/replies'
+    path: '/#/weixin/replies'
   BreadCrumbsService.add
     name: I18n.t('breadcrumbs.weixin.replies.new')
-    path: '/weixin/replies/new'
+    path: '/#/weixin/replies/new'
   
   ################################
   # 变量

@@ -28,9 +28,9 @@ WeixinServer::Application.routes.draw do
     end
     namespace :resources do
       resources :audios, only: [:index, :create]
-      resources :article_groups, only: [:index] do
-        resources :articles, only: [:create]
-      end
+      resources :article_groups, only: [:index, :show]
+      resources :articles, only: [:create, :update, :destroy]
+      resources :article_covers, only: [:create, :destroy]
     end
   end
 
@@ -39,6 +39,6 @@ WeixinServer::Application.routes.draw do
   root to: 'home#index'
   
   # 这句必须放到最末尾
-  match '*path', to: redirect('/')
+  # match '*path', to: redirect('/')
 
 end

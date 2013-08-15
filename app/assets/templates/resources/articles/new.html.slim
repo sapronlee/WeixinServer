@@ -1,0 +1,115 @@
+/! new article resource template
+/! main
+.row-fluid
+  /! review layout
+  .span4
+    .widget-box
+      .widget-header.header-color-orange.widget-header-flat.wi1dget-header-large
+        h5 = t('views.buttons.review')
+      .widget-body
+        .widget-main
+          ng-include src="'/assets/resources/articles/review.html'"
+  /! add article layout
+  .span8
+    .widget-box
+      .widget-header.widget-header-blue.widget-header-flat.wi1dget-header-large
+        h5 = t('breadcrumbs.resources.articles.new')
+      .widget-body
+        .widget-main
+          /! toolbar
+          .btn-toolbar
+            .btn-group
+              a.btn href='/#/resources/articles'
+                i.icon-arrow-left.bigger-110
+                span = t("views.buttons.back")
+          /! form
+          form#new-article name='form' novalidate='' data-file-upload="uploadOptionsForCover"
+            fieldset
+              /! title field
+              .control-group ng-class="{'error': form.title.$dirty && form.title.$invalid, 'success': form.title.$dirty && form.title.$valid}"
+                label.control-label for="article-title"
+                  = Article.human_attribute_name :title
+                  abbr.l-margin-5 title="required" *
+                .controls
+                  input#article-title.span12 type="text" name="title" required="" ng-model="article.title"
+                  .help-block ng-show="form.title.$dirty && form.title.$invalid"
+                    span ng-show="form.title.$error.required" = t("errors.messages.blank")
+              /! master field
+              .control-group
+                label.control-label for="article-master"
+                  = Article.human_attribute_name :master
+                .controls
+                  label
+                    input type="checkbox" name="article-master" ng-model="article.master"
+                    span.lbl.padding-12 = t('views.messages.articles.is_master')
+                  .hit
+                    span.label = t('views.messages.articles.master')
+              /! cover field
+              .control-group
+                label.control-label.b-margin-10 for="article-cover"
+                  = Article.human_attribute_name :cover
+                  abbr.l-margin-5 title="required" *
+                .controls
+                  .fileupload-buttonbar ng-hide="isAddedOfCover"
+                    span.btn.btn-success.btn-small.fileinput-button
+                      i.icon-plus.icon-white
+                      span = t('views.buttons.add_file')
+                      input#article-cover type="file" name="file" ng-disabled="disabled"
+                  ul.files.unstyled.position-relative ng-cloak=""
+                    li data-ng-repeat="file in queue"
+                      /! error
+                      .row-fluid data-ng-show="file.error"
+                        .span6.t-padding-5
+                          span.label.label-important {{file.error}}
+                        .span6
+                          button.btn.btn-warning.btn-small.cancel data-ng-click="fileUplaodCancel(file)"
+                            i.icon-ban-circle.icon-white
+                            span = t('views.buttons.cancel')
+                      /! upload success
+                      .row-fluid.b-margin-10 data-ng-show="!file.error && articleCover.url"
+                        .span12
+                          span tooltip-placement="bottom" tooltip="{{file.size | formatFileSize}}"
+                            img data-ng-src="{{articleCover.url}}"
+                          .button-wrap.t-margin-5
+                            button.btn.btn-danger.btn-small.destroy data-ng-click="fileUploadDestroy()"
+                              i.icon-ban-circle.icon-white
+                              span = t('views.buttons.destroy')
+                      /! upload progress
+                      .row-fluid data-ng-show="!file.error && (file.$state() != 'resolved')"
+                        .span6.t-padding-5
+                          .progress.progress-striped.active.fade data-ng-class="{pending: 'in'}[file.$state()]" data-file-upload-progress="file.$progress()"
+                            .bar data-ng-style="{width: num + '%'}"
+              /! description field
+              .control-group ng-class="{'error': form.description.$dirty && form.description.$invalid, 'success': form.description.$dirty && form.description.$valid}"
+                label.control-label for="article-description"
+                  = Article.human_attribute_name :description
+                  abbr.l-margin-5 title="required" *
+                .controls
+                  textarea#article-description.span12 rows="5" name="description" required="" ng-model="article.description"
+                  .help-block ng-show="form.description.$dirty && form.description.$invalid"
+                    span ng-show="form.description.$error.required" = t("errors.messages.blank")
+              /! content field
+              .control-group ng-class="{'error': form.content.$dirty && form.content.$invalid, 'success': form.content.$dirty && form.content.$valid}"
+                label.control-label for="article-content"
+                  = Article.human_attribute_name :content
+                .controls
+                  textarea#article-content.span12 rows="5" name="content" ng-model="article.content"
+                  .help-block ng-show="form.content.$dirty && form.content.$invalid"
+                    span ng-show="form.content.$error.required" = t("errors.messages.blank")
+              /! url field
+              .control-group ng-class="{'error': form.url.$dirty && form.url.$invalid, 'success': form.url.$dirty && form.url.$valid}"
+                label.control-label for="article-url"
+                  = Article.human_attribute_name :url
+                .controls
+                  input#article-url.span12 type="text" name="url" ng-model="article.url"
+                  .help-block ng-show="form.url.$dirty && form.url.$invalid"
+              /! buttons
+              .form-actions
+                button.btn.btn-primary.r-margin-10 type="submit" ng-click="submitArticle(form)" ng-disabled="isShowSubmitButton(form)"
+                  i.icon-ok.bigger-110
+                  span = t("views.buttons.submit")
+                a.btn href="/#/resources/articles"
+                  i.icon-arrow-left.bigger-110
+                  span = t("views.buttons.back")
+              
+                  

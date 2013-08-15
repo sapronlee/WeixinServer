@@ -3,6 +3,7 @@
 # = require jquery_ujs
 # = require bootstrap
 # = require ace
+# = require messenger
 # = require load-image.min
 # = require canvas-to-blob.min
 # = require jquery.fileupload

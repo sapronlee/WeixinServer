@@ -22,7 +22,7 @@ window.weixin.config ['$httpProvider', ($httpProvider) ->
 ]
 
 window.weixin.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
-  $locationProvider.html5Mode(true)
+  # $locationProvider.html5Mode(true)
   $routeProvider
   .when '/',
     templateUrl: '<%= asset_path("home/index.html") %>',
@@ -35,10 +35,13 @@ window.weixin.config ['$routeProvider', '$locationProvider', ($routeProvider, $l
     controller: 'NewWeixinReplyController'
   .when '/resources/audios',
     templateUrl: '<%= asset_path("resources/audios/index.html") %>',
-    controller: 'ResourceAudiosController'
+    controller: 'AudiosController'
   .when '/resources/articles',
     templateUrl: '<%= asset_path("resources/articles/index.html") %>',
-    controller: 'ResourceArticlesController'
+    controller: 'ArticlesController'
+  .when '/resources/articles/new',
+    templateUrl: '<%= asset_path("resources/articles/new.html") %>',
+    controller: 'NewArticleController'
   .otherwise 
     redirectTo: '/'
 ]

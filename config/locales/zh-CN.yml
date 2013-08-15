@@ -63,8 +63,8 @@
       actions: '操作'
       back: '返回列表'
       submit: '提交保存'
+      destroy: '删除'
       reset: '重置表单'
-      cancel: '取消'
       search: '搜索'
       tips: '小贴士'
       close: '关闭'
@@ -72,6 +72,7 @@
       upload_audio: '上传音频'
       upload_news: '上传图文'
       add_file: '添加文件'
+      review: '预览'
     accounts:
       empty: '你还没有添加微信帐号，赶快添加吧！'
       add_limit: '你还能添加个 %{limit} 微信帐号！'
@@ -86,6 +87,12 @@
         add_text: '添加文本'
         add_news: '添加图文'
         add_music: '添加音频'
+      articles:
+        is_master: '顶层'
+        master: '“顶层”表示一组图文中第一篇，图片为640X320，非顶层图片为80X80，一组图文中只能有一个顶层。'
+        success_upload_article_cover: '封面上传成功！'
+        success_destroy_article_cover: '封面删除成功！'
+        success_create_article: '添加图文成功！'
 
   errors:
     messages:
@@ -95,7 +102,7 @@
       validate_server: "操作失败，服务器验证错误。"
       server_error: "十分抱歉，服务错误，请联系管理员。"
       fileupload:
-        accept_file_types: '只能上传mp3文件。'
+        accept_file_types: '文件类型错误。'
         max_number_of_files: '超过最大上传数量。'
         max_file_size: '文件太大了，上传限制为 %{count} 。'
 
@@ -140,6 +147,15 @@
         file: '音频文件'
         title: '标题'
         description: '描述'
+      article:
+        title: '标题'
+        description: '描述'
+        content: '正文'
+        url: '原文链接'
+        cover: '封面'
+        master: '层次'
+      article_cover:
+        file: '文件'
     enums:
       reply:
         msg_type:
