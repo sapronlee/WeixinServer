@@ -1,0 +1,7 @@
+- if @obj.errors.count > 0
+  .alert.alert-error#errorExplanation
+    h2 您所提交的信息不满足审核通过条件
+    p 有如下错误：
+    ul
+    - @obj.errors.full_messages.each do |msg|
+      li = msg

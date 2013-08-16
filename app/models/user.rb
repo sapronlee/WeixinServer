@@ -1,11 +1,11 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
-  
+
   attr_accessor :captcha
-  
-  attr_accessible :email, :realname, :avatar, :password, :password_confirmation, :remember_me, :captcha
-                  
+
+  attr_accessible :email, :realname, :password, :password_confirmation, :remember_me, :captcha
+
   # Fields
   # :realname                     真实姓名
   # :encrypted_password           加密密码
@@ -29,17 +29,21 @@ class User
   field :last_sign_in_at,         type: Time
   field :current_sign_in_ip,      type: String
   field :last_sign_in_ip,         type: String
-  
+
   # Devices
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
-  
+
   # Uploaders
   # uploader :avatar, AvatarUploader, presence: false
-  
+
   # Scopes
-  
+
   # Validates
   validates :realname, presence: true
   validates :realname, length: { within: 2..20 }, unless: ->(m) { m.realname.blank? }
-  
+  validates :email, presence: true
+
+  # Relations
+  has_one :account, dependent: :destroy
+
 end

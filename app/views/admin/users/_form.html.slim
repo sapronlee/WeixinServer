@@ -1,0 +1,15 @@
+= simple_form_for [:admin, @user ||= User.new] do |f|
+  fieldset
+    .row-fliud
+      .span8.l-padding-20
+          = f.input :realname
+          = f.input :email
+          = f.input :password
+          = f.input :password_confirmation
+    .row-fliud
+      .span12
+        .form-actions
+          = f.button :submit, class: 'btn r-margin-10'
+          a.btn href=(admin_users_path)
+            i.icon-arrow-left.bigger-110
+            span = t("views.buttons.back")

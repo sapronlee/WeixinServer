@@ -1,5 +1,14 @@
 WeixinServer::Application.routes.draw do
 
+  get "accounts/index"
+
+  get "areas/index"
+
+  devise_for :admin_users, skip: [:registrations],
+              path: "admin",
+              path_names: { sign_in: :login, sign_out: :logout, password: :secret },
+              controllers: { sessions: 'admin_users/sessions', passwords: 'admin_users/passwords' }
+
   # devise routes
   devise_for :users, skip: [:registrations],
               path_names: { sign_in: :login, sign_out: :logout, password: :secret },
@@ -23,6 +32,15 @@ WeixinServer::Application.routes.draw do
       end
       resources :messages
     end
+  end
+
+  namespace :admin do
+    root to: 'home#index'
+    resources :users
+    resources :areas
+    resources :accounts
+    resources :messages
+    resources :replies
   end
 
   # normal routes

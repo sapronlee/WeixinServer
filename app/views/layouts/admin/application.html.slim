@@ -1,0 +1,82 @@
+doctype html
+html lang="zh-cn" ng-app='weixin'
+  head
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    meta name="description" content="#{Setting.app_name_locale}"
+    title = content_for?(:title) ? yield(:title) : Setting.app_name_locale
+    = csrf_meta_tags
+
+    /! Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      javascript src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"
+
+    = stylesheet_link_tag 'admin/application', media: :all
+    = content_for :styles
+
+    /[if IE 7]
+      = stylesheet_link_tag 'font-awesome-ie7'
+
+
+  body.navbar-fixed ng-controller='MainController'
+    .navbar.navbar-fixed-top bs-navbar=''
+      .navbar-inner
+        .container
+          a.btn.btn-navbar data-toggle='collapse' data-target='.nav-collapse'
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          = link_to root_path, class: 'brand' do
+            i.icon-comments
+            span = Setting.app_name_locale
+          .nav-collapse.collapse.navbar-responsive-collapse
+            ul.nav
+              li class=["#{controller_name == 'home' ? 'active' : ''}"]
+                = link_to t('breadcrumbs.home.index'), admin_root_path
+              li class=["#{%w(users accounts).include?(controller_name) ? 'active dropdown' : 'dropdown'}"]
+                a.dropdown-toggle href='#' data-toggle='dropdown'
+                  span.title.r-padding-5 = t('breadcrumbs.application.user_manager')
+                  b.caret
+                ul.dropdown-menu.dropdown-yellow.dropdown-caret.dropdown-closer
+                  li = link_to t('breadcrumbs.application.users'), admin_users_path
+                  li.divider
+                  li = link_to t('breadcrumbs.application.accounts'), admin_accounts_path
+              li.dropdown
+                a.dropdown-toggle href='#' data-toggle='dropdown'
+                  span.title.r-padding-5 = t('breadcrumbs.weixin.application.index')
+                  b.caret
+                ul.dropdown-menu.dropdown-yellow.dropdown-caret.dropdown-closer
+                  li = link_to t('breadcrumbs.weixin.areas.index'), admin_areas_path
+                  li.divider
+                  li = link_to t('breadcrumbs.weixin.accounts.index'), '#weixin/accounts'
+                  li.divider
+                  li = link_to t('breadcrumbs.weixin.messages.index'), '#weixin/messages'
+                  li.divider
+                  li = link_to t('breadcrumbs.weixin.replies.index'), '/#/weixin/replies'
+            ul.nav.ace-nav.pull-right
+              li.light-blue.user-profile
+                = link_to '#', class: 'user-menu dropdown-toggle', data: { toggle: 'dropdown' } do
+                  = image_tag 'avatars/avatar.png', class: 'nav-user-photo'
+                  span.user_info
+                    small = current_admin_user.email
+                  i.icon-caret-down
+                ul.pull-right.dropdown-menu.dropdown-yellow.dropdown-caret.dropdown-closer#user-menu
+                  li = link_to '#' do
+                    i.icon-cog.icon-large
+                    span = t('views.user.setting')
+                  li.divider
+                  li = link_to destroy_admin_user_session_path, method: :delete do
+                    i.icon-signout.icon-large
+                    span = t('views.user.logout')
+    .container
+      .row-fluid
+        .span12
+          .margin-top#breadcrumbs
+            = render_breadcrumbs
+      = bootstrap_flash
+      .row-fluid.t-margin-20
+        .span12
+          = yield
+    = javascript_include_tag 'admin/application'
+    = content_for :scripts

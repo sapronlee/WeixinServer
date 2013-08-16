@@ -1,0 +1,28 @@
+.row-fluid
+  .span12
+    div
+      .area-list
+        .widget-box.transparent
+          .widget-body
+            .widget-toolbox.padding-8
+              .btn-toolbar
+                .btn-group
+                  a.btn.btn-success.btn-small href=(new_admin_account_path)
+                    i.icon-file-text
+                    span.l-padding-5 = t("breadcrumbs.admin.accounts.new")
+            .widget-main
+              table.table.table-striped.table-bordered.table-hover
+                tr
+                  td = Account.human_attribute_name :user_id
+                  td = Account.human_attribute_name :name
+                  td = Account.human_attribute_name :created_at
+                  td = t('views.buttons.actions')
+                - @accounts.each do |account|
+                  tr
+                    td = account.user.realname
+                    td = account.name
+                    td = account.created_at
+                    td.actions
+                      a href=(edit_admin_account_path account)
+                        i.icon-pencil
+              = paginate @accounts

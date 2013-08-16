@@ -11,4 +11,9 @@
         current_password: '必须填写，至少要6位字符。'
         password_confirmation: '重复密码，必须和上面的一样。'
         avatar: '上传你的头像，只能是(JPG,PNG,GIF)格式的图片。'
-    
+      account:
+        user_id: '必须填写，不能使用已选择的帐号。'
+        en_name: '必须填写'
+        token: '系统生成'
+        identifier: '微信标识码，由微信访问系统时获得'
+        desc: '描述'

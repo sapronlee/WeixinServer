@@ -3,14 +3,14 @@
 if Rails.env.test? or Rails.env.development?
   # Admin User
   User.find_or_create_by realname: '毛毛', email: 'sapronlee@gmail.com', password: '123123', password_confirmation: '123123'
-
+  AdminUser.find_or_create_by realname: 'admin', email: 'admin@1trip.com', password: '123123', password_confirmation: '123123'
   # Test Replies Data
   Reply.find_or_create_by number: 1, name: '武侯祠', title: '武侯祠', content: '这里是武侯祠'
   Reply.find_or_create_by number: 2, name: '杜甫草堂', title: '杜甫草堂', content: '这里是杜甫草堂'
   Reply.find_or_create_by number: 3, name: '青城山', title: '青城山', content: '这里是青城山'
   Reply.find_or_create_by number: 4, name: '峨眉山', title: '峨眉山', content: '这里是峨眉山'
 
-  a = Account.create name: '四川旅游局', en_name: 'en_四川旅游局', lock: false, avatar: File.open(Rails.root + "app/assets/images/xinwen54.jpg"), qr_code: File.open(Rails.root+"app/assets/images/avatars/avatar.png")
+  a = Account.create name: '四川旅游局', en_name: 'en_四川旅游局'
   member = a.members.create open_id: '1234567890'
   member.messages.create msg_type: :text,     content: { content: 'test text' }.to_json
   member.messages.create msg_type: :image,    content: { pic_url: 'http://3g.1trip.com/Places/cseh/Images/map-Tubnil.jpg' }.to_json
