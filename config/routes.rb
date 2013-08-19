@@ -37,6 +37,13 @@ WeixinServer::Application.routes.draw do
     resources :accounts
     resources :messages, only: [:index, :show]
     resources :replies
+    namespace :resources do
+      resources :articles, only: [:index]
+      resources :pictures, only: [:index]
+      resources :images, only: [:index]
+      resources :audios, only: [:index]
+      resources :videos, only: [:index]
+    end
   end
 
   # normal routes

@@ -41,6 +41,20 @@
         new: '添加新回复'
       messages:
         index: '消息'
+    resources:
+      application:
+        index: '素材'
+      articles:
+        index: '图文'
+      pictures:
+        index: '图集'
+      images:
+        index: '图片'
+      audios:
+        index: '音频'
+      videos:
+        index: '视频'
+
 
   views:
     user:
