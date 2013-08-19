@@ -1,0 +1,30 @@
+.row-fluid
+  .span12
+    div
+      .audio-list
+        .widget-box.transparent
+          .widget-body
+            .widget-toolbox.padding-8
+              .btn-toolbar
+                .btn-group
+                  a.btn.btn-success.btn-small href==new_admin_resources_audio_path
+                    i.icon-file-text
+                    span.l-padding-5 = t("breadcrumbs.admin.resources.audios.new")
+            .widget-main
+              table.table.table-striped.table-bordered.table-hover
+                tr
+                  th.audio-title = Audio.human_attribute_name :title
+                  th.audio-file = Audio.human_attribute_name :file
+                  th.audio-desc = Audio.human_attribute_name :desc
+                  th.audio-created-at = Audio.human_attribute_name :created_at
+                  th.audio-active = t('views.buttons.actions')
+                - @audios.each do |audio|
+                  tr
+                    td = audio.title
+                    td = audio_tag(audio.file, autoplay: false, controls: true)
+                    td = truncate(audio.desc, length: 6)
+                    td = message.created_at
+                    td.actions
+                      a href==admin_resources_audio_path(audio)
+                        i.icon-eye-open
+              = paginate @audios

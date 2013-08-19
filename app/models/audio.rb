@@ -4,13 +4,13 @@ class Audio
   include Mongoid::Uploader
 
   # Attributes
-  # :desc       描述
-  # :file       文件
-
-  # Fields
-  field :desc, type: String
+  field :title, type: String
+  field :desc,  type: String
 
   # Uploader
   uploader_media :file, AudioUploader, size: Setting.audio_upload_size
+
+  # Validates
+  validates :title, presence: true
 
 end

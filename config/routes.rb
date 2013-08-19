@@ -40,8 +40,7 @@ WeixinServer::Application.routes.draw do
     namespace :resources do
       resources :articles, only: [:index]
       resources :pictures, only: [:index]
-      resources :images, only: [:index]
-      resources :audios, only: [:index]
+      resources :audios
       resources :videos, only: [:index]
     end
   end

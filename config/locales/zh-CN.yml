@@ -14,6 +14,19 @@
       messages:
         index: '消息列表'
         show: '查看消息'
+      resources:
+        application:
+          index: '素材'
+        articles:
+          index: '图文'
+        pictures:
+          index: '图集'
+        audios:
+          index: '音频'
+          new: '添加音频'
+          edit: '编辑音频'
+        videos:
+          index: '视频'
     application:
       index: '微信平台'
       user_manager: '用户管理'
@@ -41,19 +54,6 @@
         new: '添加新回复'
       messages:
         index: '消息'
-    resources:
-      application:
-        index: '素材'
-      articles:
-        index: '图文'
-      pictures:
-        index: '图集'
-      images:
-        index: '图片'
-      audios:
-        index: '音频'
-      videos:
-        index: '视频'
 
 
   views:
@@ -159,6 +159,11 @@
         created_at: '创建时间'
       admin_user:
         realname: '昵称'
+      audio:
+        title: '标题'
+        file: '音频'
+        desc: '描述'
+        created_at: '创建时间'
 
   enums:
     message:
@@ -177,3 +182,6 @@
     user:
       success: "操作用户成功！"
       error: "操作用户失败！"
+    audio:
+      success: "操作音频成功！"
+      error: "操作音频失败！"

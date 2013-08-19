@@ -1,0 +1,14 @@
+= simple_form_for [:admin, :resources, @audio ||= Audio.new] do |f|
+  fieldset
+    .row-fliud
+      .span8.l-padding-20
+        = f.input :title
+        = f.input :file
+        = f.input :desc, as: :text, input_html: { rows: 10 , class: "input-block-level" }
+    .row-fliud
+      .span12
+        .form-actions
+          = f.button :submit, class: 'btn r-margin-10'
+          a.btn href==admin_resources_audios_path
+            i.icon-arrow-left.bigger-110
+            span = t("views.buttons.back")
