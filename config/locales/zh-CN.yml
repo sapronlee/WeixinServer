@@ -80,6 +80,8 @@
       empty: '你还没有添加微信帐号，赶快添加吧！'
       add_limit: '你还能添加个 %{limit} 微信帐号！'
       create_success: '你已经成功添加微信帐号，赶快激活它吧！'
+    messages:
+      link: '点击我查看'
     affix:
       title: '帮助栏'
     pagination:
@@ -121,6 +123,13 @@
         name: '微信名称'
         msg_type: '消息类型'
         content: '内容'
+        image: '图片'
+        location: '地理位置'
+        scale: '地图缩放大小'
+        label: '地理位置信息'
+        link: '链接信息'
+        event: '事件行为'
+        event_key: '事件信息'
         created_at: '创建时间'
       account:
         user_id: '所属帐号'
@@ -145,6 +154,7 @@
         image: '图片'
         music: '音频'
         location: '地理位置'
+        event: '事件'
 
   messages:
     account:

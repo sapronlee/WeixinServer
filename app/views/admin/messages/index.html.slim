@@ -1,0 +1,22 @@
+.row-fluid
+  .span12
+    div
+      .message-list
+        .widget-box.transparent
+          .widget-body
+            .widget-main
+              table.table.table-striped.table-bordered.table-hover
+                tr
+                  th = Message.human_attribute_name :msg_type
+                  th = Message.human_attribute_name :content
+                  th = Message.human_attribute_name :created_at
+                  th = t('views.buttons.actions')
+                - @messages.each do |message|
+                  tr
+                    td = Message.human_enum_name :msg_type, message.msg_type
+                    td = truncate(message.content, length: 70)
+                    td = message.created_at
+                    td.actions
+                      a href==admin_message_path(message)
+                        i.icon-eye-open
+              = paginate @messages

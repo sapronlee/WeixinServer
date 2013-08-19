@@ -17,6 +17,7 @@ if Rails.env.test? or Rails.env.development?
   member.messages.create msg_type: :image,    content: { pic_url: 'http://3g.1trip.com/Places/cseh/Images/map-Tubnil.jpg' }.to_json
   member.messages.create msg_type: :location, content: { location_x: 23.134521, location_y: 113.358803, scale: 20, label: '位置信息' }.to_json
   member.messages.create msg_type: :link,     content: {title: '公众平台官网链接', description: '公众平台官网链接', url: 'http://mp.weixin.qq.com/wiki/index.php?title=%E6%B6%88%E6%81%AF%E6%8E%A5%E5%8F%A3%E6%8C%87%E5%8D%97#.E5.9B.9E.E5.A4.8D.E9.9F.B3.E4.B9.90.E6.B6.88.E6.81.AF'}.to_json
+  member.messages.create msg_type: :location, content: { event: 'subscribe', event_key: '1' }.to_json
 
 end
 
