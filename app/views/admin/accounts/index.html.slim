@@ -13,10 +13,10 @@
             .widget-main
               table.table.table-striped.table-bordered.table-hover
                 tr
-                  td = Account.human_attribute_name :user_id
-                  td = Account.human_attribute_name :name
-                  td = Account.human_attribute_name :created_at
-                  td = t('views.buttons.actions')
+                  th = Account.human_attribute_name :user_id
+                  th = Account.human_attribute_name :name
+                  th = Account.human_attribute_name :created_at
+                  th = t('views.buttons.actions')
                 - @accounts.each do |account|
                   tr
                     td = account.user.realname

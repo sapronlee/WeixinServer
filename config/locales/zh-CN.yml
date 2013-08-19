@@ -11,6 +11,9 @@
         index: '帐号列表'
         new: '添加帐号'
         edit: '编辑帐号'
+      messages:
+        index: '消息列表'
+        show: '查看消息'
     application:
       index: '微信平台'
       user_manager: '用户管理'

@@ -1,9 +1,5 @@
 WeixinServer::Application.routes.draw do
 
-  get "accounts/index"
-
-  get "areas/index"
-
   devise_for :admin_users, skip: [:registrations],
               path: "admin",
               path_names: { sign_in: :login, sign_out: :logout, password: :secret },
@@ -39,7 +35,7 @@ WeixinServer::Application.routes.draw do
     resources :users
     resources :areas
     resources :accounts
-    resources :messages
+    resources :messages, only: [:index, :show]
     resources :replies
   end
 

@@ -13,9 +13,9 @@
             .widget-main
               table.table.table-striped.table-bordered.table-hover
                 tr
-                  td = User.human_attribute_name :realname
-                  td = User.human_attribute_name :created_at
-                  td = t('views.buttons.actions')
+                  th = User.human_attribute_name :realname
+                  th = User.human_attribute_name :created_at
+                  th = t('views.buttons.actions')
                 - @users.each do |user|
                   tr
                     td = user.realname
@@ -23,6 +23,4 @@
                     td.actions
                       a href=(edit_admin_user_path user)
                         i.icon-pencil
-                      a href="#"
-                        i.icon-trash
               = paginate @users
