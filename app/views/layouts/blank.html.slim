@@ -16,11 +16,11 @@ html lang="zh-cn" ng-app='weixin'
     
     /[if IE 7]
       = stylesheet_link_tag 'font-awesome-ie7'
-    
-  body.login-layout
-    #main-container.container-fluid
-      #main-content
-        .row-fluid
-          .span12
-            = yield
+            
+  body.login
+    .container
+      .row-fluid
+        .span12
+          = yield
+
     = javascript_include_tag :application

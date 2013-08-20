@@ -1,0 +1,5 @@
+ul.articles
+  li.article ng-repeat="reArticle in articles"
+    div ng-switch="articles.length"
+      .single ng-switch-when="1"
+      .multiple ng-switch-default=""

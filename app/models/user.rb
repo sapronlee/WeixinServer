@@ -5,7 +5,8 @@ class User
   attr_accessor :captcha
 
   attr_accessible :email, :realname, :password, :password_confirmation, :remember_me, :captcha
-
+  
+  
   # Fields
   # :realname                     真实姓名
   # :encrypted_password           加密密码
@@ -35,8 +36,9 @@ class User
 
   # Uploaders
   # uploader :avatar, AvatarUploader, presence: false
-
-  # Scopes
+  
+  # Relations
+  has_one :account
 
   # Validates
   validates :realname, presence: true

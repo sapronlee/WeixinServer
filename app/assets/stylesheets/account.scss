@@ -1,3 +1,18 @@
+#account-table {
+  margin-bottom: 0;
+  td {
+    padding: 18px;
+    font-size: 14px;
+  }
+  tr {
+    td:first-child {
+      color: #ccc;
+      width: 100px;
+    }
+  }
+}
+
+
 .account {
   .account-avatar {
     width: 120px;

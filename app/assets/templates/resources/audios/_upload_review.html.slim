@@ -1,0 +1,25 @@
+ul.files.unstyled.position-relative ng-cloak=""
+  li data-ng-repeat="file in queue"
+    /! select upload file error
+    .row-fluid ng-if="!!file.error"
+      span.label.label-important {{file.error}}
+      button.btn.btn-warning.btn-small.cancel data-ng-click="fileCancel(file)"
+        i.icon-ban-circle.icon-white
+        span = t('views.buttons.re_upload')
+    /! file upload field
+    .row-fluid ng-if="!file.error"
+      .span8.preview data-file-upload-preview="file"
+      .span4.btn-wrap
+        button.btn.btn-warning.btn-small.cancel data-ng-click="fileCancel(file)"
+          i.icon-ban-circle.icon-white
+          span = t('views.buttons.re_upload')
+    .row-fluid ng-if="!file.error"
+      .span12
+        .info
+          span.label.name {{file.name}}
+          span.label.label-inverse.size {{file.size | formatFileSize}}
+    .row-fluid.progress-wrap ng-if="!file.error"
+      .span12
+        .progress.progress-success.active data-file-upload-progress="file.$progress()"
+          .bar data-ng-style="{width: num + '%'}"
+      

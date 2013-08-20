@@ -39,13 +39,9 @@
     weixin:
       application:
         index: '微信'
-        areas: '区域'
         accounts: '帐号'
         messages: '消息'
         replies: '回复'
-      areas:
-        index: '区域'
-        new: '添加区域'
       accounts:
         index: '帐号'
         destroy: '删除帐号'
@@ -54,14 +50,24 @@
         new: '添加新回复'
       messages:
         index: '消息'
-
+    resources:
+      application:
+        index: '素材'
+        audios: '音频'
+        articles: '图文'
+      audios:
+        index: '音频'
+        new: '添加音频'
+      articles:
+        index: '图文'
+        new: '添加图文'
 
   views:
     user:
       setting: '设置'
       logout: '退出'
     login:
-      title: 'Please Enter Your Information'
+      title: '壹旅游微信服务平台欢迎你！'
       email: '邮箱'
       password: '密码'
       captcha: '验证码'
@@ -86,10 +92,19 @@
     buttons:
       actions: '操作'
       back: '返回列表'
+      edit: '修改'
       submit: '提交保存'
+      destroy: '删除'
       reset: '重置表单'
-      cancel: '取消'
       search: '搜索'
+      tips: '小贴士'
+      close: '关闭'
+      cancel: '取消'
+      re_upload: '重新上传'
+      upload_audio: '上传音频'
+      upload_news: '上传图文'
+      add_file: '添加文件'
+      review: '预览'
     accounts:
       empty: '你还没有添加微信帐号，赶快添加吧！'
       add_limit: '你还能添加个 %{limit} 微信帐号！'
@@ -104,6 +119,30 @@
       previous: "上一页"
       next: "下一页"
       truncate: "..."
+    titles:
+      alert: '警告'
+      heads_up: '小心'
+      accounts:
+        info: '帐号信息'
+    messages:
+      place_chose: '请选择'
+      error_title: '出错啦'
+      audio_file_blank: '必须上传音频文件。'
+      audios:
+        success: '创建音频文件成功！'
+      accounts:
+        empty: '您的微信帐号还没有开通，请联系管理员。'
+        not_found: '你的微信帐号异常，请联系管理员。'
+      reply:
+        add_text: '添加文本'
+        add_news: '添加图文'
+        add_music: '添加音频'
+      articles:
+        is_master: '顶层'
+        master: '“顶层”表示一组图文中第一篇，图片为640X320，非顶层图片为80X80，一组图文中只能有一个顶层。'
+        success_upload_article_cover: '封面上传成功！'
+        success_destroy_article_cover: '封面删除成功！'
+        success_create_article: '添加图文成功！'
 
   errors:
     messages:
@@ -113,11 +152,16 @@
       validate_server: "操作失败，服务器验证错误。"
       server_error: "十分抱歉，服务错误，请联系管理员。"
       unique_error: "该名称已经存在，请更换！"
+      fileupload:
+        accept_file_types: '文件类型错误。'
+        max_number_of_files: '超过最大上传数量。'
+        max_file_size: '文件太大了，上传限制为 %{count} 。'
 
   mongoid:
     models:
       user: '用户'
       account: '微信帐号'
+      reply: '回复'
     attributes:
       user:
         realname: '昵称'
@@ -185,3 +229,37 @@
     audio:
       success: "操作音频成功！"
       error: "操作音频失败！"
+        api: '访问API'
+        members_count: '关注数'
+        replies_count: '回复数'
+      reply:
+        number: '唯一编号'
+        name: '名字'
+        title: '标题'
+        area: '区域'
+        area_id: '所属区域'
+        msg_type: '类型'
+        content: '文本内容'
+        audio_title: '音频标题'
+        audio_file: '音频文件'
+      audio:
+        file: '音频文件'
+        title: '标题'
+        description: '描述'
+        created_at: '创建时间'
+        updated_at: '修改时间'
+      article:
+        title: '标题'
+        description: '描述'
+        content: '正文'
+        url: '原文链接'
+        cover: '封面'
+        master: '层次'
+      article_cover:
+        file: '文件'
+    enums:
+      reply:
+        msg_type:
+          text: '文本'
+          news: '图文'
+          music: '音频'

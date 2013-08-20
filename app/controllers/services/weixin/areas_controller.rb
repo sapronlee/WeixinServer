@@ -31,10 +31,13 @@ class Services::Weixin::AreasController < Services::Weixin::ApplicationControlle
     @area = Area.where(name: params[:name]).first
     render json: { result: @area.present? }
   end
+  
+  def list
+    @areas = Area.all
+  end
 
   private
   def find_area
     @area = Area.where(id: params[:id]).first
   end
-
 end
