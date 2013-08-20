@@ -644,10 +644,15 @@ angular.module('$strap.directives').directive('bsSelect', [
       require: '?ngModel',
       link: function postLink(scope, element, attrs, controller) {
         var options = scope.$eval(attrs.bsSelect) || {};
-        $timeout(function () {
-          element.selectpicker(options);
-          element.next().removeClass('ng-scope');
+        element.selectpicker(options);
+        element.next().removeClass('ng-scope');
+
+        scope.$watch(function () {
+          return element[0].length;
+        }, function () {
+          element.selectpicker('refresh');
         });
+        
         if (controller) {
           scope.$watch(attrs.ngModel, function (newValue, oldValue) {
             if (!angular.equals(newValue, oldValue)) {

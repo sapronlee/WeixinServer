@@ -1,0 +1,57 @@
+/! top toolbar
+.btn-toolbar
+  .btn-group
+    a.btn href='/#/resources/audios'
+      i.icon-arrow-left.bigger-110
+      span = t("views.buttons.back")
+
+.row-fluid
+  /! add article layout
+  .span8
+    .widget-box
+      .widget-header.widget-header-blue.widget-header-flat.wi1dget-header-large
+        h5 = t('breadcrumbs.resources.audios.new')
+      .widget-body
+        .widget-main
+          /! form
+          form#new-article name='form' novalidate='' data-file-upload="uploadOptionsForFile"
+            fieldset
+              /! file field
+              .control-group
+                label.control-label.b-margin-10 for="audioFile"
+                  = Audio.human_attribute_name :file
+                  abbr.l-margin-5 title="required" *
+                .controls
+                  .fileupload-buttonbar ng-hide="isAddedFile"
+                    span.btn.btn-success.btn-small.fileinput-button
+                      i.icon-plus.icon-white
+                      span = t('views.buttons.add_file')
+                      input#article-cover type="file" name="file" ng-disabled="disabled"
+                  ng-include src="'/assets/resources/audios/_upload_review.html'"
+              /! title field
+              .control-group ng-class="{'error': form.title.$dirty && form.title.$invalid, 'success': form.title.$dirty && form.title.$valid}" ng-if="!file.error"
+                label.control-label for="audioTitle"
+                  = Audio.human_attribute_name :title
+                  abbr.l-margin-5 title="required" *
+                .controls
+                  input#audioTitle.input-block-level type="text" name="title" required="" ng-model="audio.title"
+                  .help-block ng-show="form.title.$dirty && form.title.$invalid"
+                    span ng-show="form.title.$error.required" = t("errors.messages.blank")
+      
+              /! description field
+              .control-group ng-class="{'error': form.description.$dirty && form.description.$invalid, 'success': form.description.$dirty && form.description.$valid}" ng-if="!file.error"
+                label.control-label for="audio_description"
+                  = Audio.human_attribute_name :description
+                  abbr.l-margin-5 title="required" *
+                .controls
+                  textarea#audio_description.input-block-level rows="4" name="description" required="" ng-model="audio.description"
+                  .help-block ng-show="form.description.$dirty && form.description.$invalid"
+                    span ng-show="form.description.$error.required" = t("errors.messages.blank")
+              /! buttons
+              .form-actions
+                button.btn.btn-primary.r-margin-10 type="submit" ng-click="submitAudio(form)" ng-disabled="isShowSubmitButton(form)"
+                  i.icon-ok.bigger-110
+                  span = t("views.buttons.submit")
+                a.btn href="/#/resources/audios"
+                  i.icon-arrow-left.bigger-110
+                  span = t("views.buttons.back")

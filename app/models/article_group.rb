@@ -2,14 +2,17 @@ class ArticleGroup
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :name, type: String
+  # Attributes
+  # :name             别名（方便记忆）
+  # :articles_count   文章个数
 
-  # Validates
-  validates :name, presence: true
+  # Fields
+  field :name,           type: String
+  field :articles_count, type: Integer, default: 0
 
   # Relations
-  belongs_to :reply
   has_many :articles, dependent: :destroy
 
-  accepts_nested_attributes_for :articles, reject_if: lambda { |a| a[:file].blank? }, allow_destroy: true
+  # Validates
+  validates :name, length: { within: 2..20 }, unless: ->(m) { m.name.blank? }
 end

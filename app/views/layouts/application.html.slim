@@ -13,13 +13,11 @@ html lang="zh-cn" ng-app='weixin'
       javascript src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"
 
     = stylesheet_link_tag :application, media: :all
-    = content_for :styles
-
+    
     /[if IE 7]
       = stylesheet_link_tag 'font-awesome-ie7'
-
-
-  body.navbar-fixed ng-controller='MainController'
+    
+  body.navbar-fixed ng-controller="MainController"
     .navbar.navbar-fixed-top bs-navbar=''
       .navbar-inner
         .container
@@ -32,20 +30,29 @@ html lang="zh-cn" ng-app='weixin'
             span = Setting.app_name_locale
           .nav-collapse.collapse.navbar-responsive-collapse
             ul.nav
+              /! home
               li.active data-match-route='/' = link_to t('breadcrumbs.home.index'), root_path
-              li.dropdown data-match-route='/weixin/.*'
-                a.dropdown-toggle href='#' data-toggle='dropdown'
-                  span.title.r-padding-5 = t('breadcrumbs.weixin.application.index')
-                  b.caret
-                ul.dropdown-menu.dropdown-yellow.dropdown-caret.dropdown-closer
-                  li = link_to t('breadcrumbs.weixin.areas.index'), '#weixin/areas'
-                  li.divider
-                  li = link_to t('breadcrumbs.weixin.accounts.index'), '#weixin/accounts'
-                  li.divider
-                  li = link_to t('breadcrumbs.weixin.messages.index'), '#weixin/messages'
-                  li.divider
-                  li = link_to t('breadcrumbs.weixin.replies.index'), '/#/weixin/replies'
+              /! accounts
+              - if current_user.account.present?
+                li.active data-match-route='/accounts' = link_to t('breadcrumbs.weixin.application.accounts'), '/#/accounts'
+              /! messages
+              - if current_user.account.present?
+                li.active data-match-route='/messages' = link_to t('breadcrumbs.weixin.application.messages'), '/#/messages'
+              /! replies
+              - if current_user.account.present?
+                li.active data-match-route='/replies' = link_to t('breadcrumbs.weixin.application.replies'), '/#/replies'
+              /! resources
+              - if current_user.account.present?
+                li.dropdown data-match-route='/resources/.*'
+                  a.dropdown-toggle href='#' data-toggle='dropdown'
+                    span.title.r-padding-5 = t('breadcrumbs.resources.application.index')
+                    b.caret
+                  ul.dropdown-menu.dropdown-yellow.dropdown-caret.dropdown-closer
+                    li = link_to t('breadcrumbs.resources.audios.index'), '/#/resources/audios'
+                    li.divider
+                    li = link_to t('breadcrumbs.resources.articles.index'), '/#/resources/articles'
             ul.nav.ace-nav.pull-right
+              /! users
               li.light-blue.user-profile
                 = link_to '#', class: 'user-menu dropdown-toggle', data: { toggle: 'dropdown' } do
                   = image_tag 'avatars/avatar.png', class: 'nav-user-photo'
@@ -66,7 +73,8 @@ html lang="zh-cn" ng-app='weixin'
           lb-breadcrumbs
       .row-fluid.t-margin-20
         .span12
-          = yield
-          ng-view ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}"
+          ui-view
+    footer
+      
     = javascript_include_tag :application, :angular
     = content_for :scripts

@@ -4,7 +4,9 @@
       .span8.l-padding-20
         = f.input :title
         = f.input :file
-        = f.input :desc, as: :text, input_html: { rows: 10 , class: "input-block-level" }
+        - if @audio.file && @audio.file.present?
+          .controls = audio_tag(@audio.file, autoplay: false, controls: true)
+        = f.input :description, as: :text, input_html: { rows: 10 , class: "input-block-level" }
     .row-fliud
       .span12
         .form-actions

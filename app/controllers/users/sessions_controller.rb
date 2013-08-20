@@ -2,8 +2,6 @@ class Users::SessionsController < Devise::SessionsController
   
   layout 'blank'
   
-  skip_before_filter :require_no_authentication, :only => [:new]
-  
   def create
     if valid_captcha?(params[:user][:captcha])
       super

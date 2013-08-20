@@ -1,0 +1,5 @@
+.control-group ng-class="{'error': form.content.$dirty && form.content.$invalid, 'success': form.content.$dirty && form.content.$valid}"
+  .controls
+    textarea#weixin_reply_content.span12 type="text" name="content" ng-required="requiredContent" ng-model="reply.content" rows='4'
+    .help-block ng-show="form.content.$dirty && form.content.$invalid"
+      span ng-show="form.content.$error.required" = t("errors.messages.blank")
