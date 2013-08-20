@@ -17,8 +17,11 @@
       resources:
         application:
           index: '素材'
-        articles:
+        article_groups:
           index: '图文'
+          new: '添加图文'
+          edit: '编辑图文'
+          show: '查看图文'
         pictures:
           index: '图集'
         audios:
@@ -118,6 +121,8 @@
     models:
       user: '用户'
       account: '微信帐号'
+      article_group: '图文'
+      audio: '音频'
     attributes:
       user:
         realname: '昵称'
@@ -163,6 +168,9 @@
         title: '标题'
         file: '音频'
         desc: '描述'
+        created_at: '创建时间'
+      article_group:
+        name: '名称'
         created_at: '创建时间'
 
   enums:

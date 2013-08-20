@@ -1,0 +1,28 @@
+.row-fluid
+  .span12
+    div
+      .article-group-list
+        .widget-box.transparent
+          .widget-body
+            .widget-toolbox.padding-8
+              .btn-toolbar
+                .btn-group
+                  a.btn.btn-success.btn-small href==new_admin_resources_article_group_path
+                    i.icon-file-text
+                    span.l-padding-5 = t("breadcrumbs.admin.resources.article_groups.new")
+            .widget-main
+              table.table.table-striped.table-bordered.table-hover
+                tr
+                  th = ArticleGroup.human_attribute_name :name
+                  th = ArticleGroup.human_attribute_name :created_at
+                  th = t('views.buttons.actions')
+                - @article_groups.each do |article_group|
+                  tr
+                    td = article_group.name
+                    td = article_group.created_at
+                    td.actions
+                      a href==edit_admin_resources_article_group_path(article_group)
+                        i.icon-edit
+                      a href==admin_resources_article_group_path(article_group)
+                        i.icon-eye-open
+              = paginate @article_groups

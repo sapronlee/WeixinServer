@@ -23,7 +23,7 @@
                     td = audio.title
                     td = audio_tag(audio.file, autoplay: false, controls: true)
                     td = truncate(audio.desc, length: 6)
-                    td = message.created_at
+                    td = audio.created_at
                     td.actions
                       a href==admin_resources_audio_path(audio)
                         i.icon-eye-open

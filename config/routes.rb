@@ -38,7 +38,7 @@ WeixinServer::Application.routes.draw do
     resources :messages, only: [:index, :show]
     resources :replies
     namespace :resources do
-      resources :articles, only: [:index]
+      resources :article_groups
       resources :pictures, only: [:index]
       resources :audios
       resources :videos, only: [:index]
