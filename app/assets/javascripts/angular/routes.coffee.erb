@@ -1,21 +1,34 @@
-angular.module('weixin').config ['$routeProvider', ($routeProvider) ->
-  $routeProvider
-  .when '/',
-    templateUrl: '<%= asset_path("home/index.html") %>',
-    controller: 'HomeController'
+angular.module('weixin').config ['$urlRouterProvider', '$stateProvider', ($urlRouterProvider, $stateProvider) ->
+  $urlRouterProvider.otherwise '/'
+  
+  $stateProvider
+    .state 'home',
+      url: '/'
+      templateUrl: '<%= asset_path("home/index.html") %>'
+      controller: 'HomeController'
     
-  .when '/accounts',
-    templateUrl: '<%= asset_path("accounts/index.html") %>',
-    controller: 'AccountsController'
-
-  .when '/messages',
-    templateUrl: '<%= asset_path("messages/index.html") %>',
-    controller: 'MessagesController'
+    .state 'accounts',
+      url: '/accounts'
+      templateUrl: '<%= asset_path("accounts/index.html") %>'
+      controller: 'AccountsController'
+      
+    .state 'messages',
+      url: '/messages'
+      templateUrl: '<%= asset_path("messages/index.html") %>'
+      controller: 'MessagesController'
+      
+    .state 'replies',
+      url: '/replies'
+      templateUrl: '<%= asset_path("replies/index.html") %>'
+      controller: 'RepliesController'
     
-  .when '/replies',
-    templateUrl: '<%= asset_path("replies/index.html") %>',
-    controller: 'RepliesController'
-
-  .otherwise 
-    redirectTo: '/'
+    .state 'audios',
+      url: '/resources/audios'
+      templateUrl: '<%= asset_path("resources/audios/index.html") %>'
+      controller: 'AudiosController'
+    
+    .state 'newAudio',
+      url: '/resources/audios/new'
+      templateUrl: '<%= asset_path("resources/audios/new.html") %>'
+      controller: 'NewAudioController'
 ]

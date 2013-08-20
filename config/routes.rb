@@ -6,11 +6,14 @@ WeixinServer::Application.routes.draw do
               path_names: { sign_in: :login, sign_out: :logout, password: :secret },
               controllers: { sessions: 'users/sessions', passwords: 'users/passwords' }
 
-  # api routes
-  namespace :api, defaults: { format: :json }, constraints: { format: :json } do
+  # weixin server routes
+  namespace :api, defaults: { format: :xml }, constraints: { format: :xml } do
     namespace :v1 do
-      resources :accounts, only: [:create, :update, :destroy] do
-        post :status, on: :member
+      resources :accounts, only: [:show]
+      scope path: 'accounts/:id', via: :post do
+        root to:'accounts#text', constraints: Weixin::Router.new(:text)
+        root to:'accounts#image', constraints: Weixin::Router.new(:image)
+        root to:'accounts#location', constraints: Weixin::Router.new(:location)
       end
     end
   end
@@ -24,13 +27,16 @@ WeixinServer::Application.routes.draw do
       resources :areas, only: [:index, :create, :update, :destroy] do
         get :list, on: :collection
       end
-      resources :audios, only: [:create]
     end
     namespace :resources do
       resources :audios, only: [:index, :create]
       resources :article_groups, only: [:index, :show]
       resources :articles, only: [:create, :update, :destroy]
       resources :article_covers, only: [:create, :destroy]
+    end
+    resources :users, only: [] do
+      post :require_current_user, on: :collection
+      get :account, on: :collection
     end
   end
 

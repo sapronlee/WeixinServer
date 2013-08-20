@@ -3,7 +3,7 @@ angular.module('weixin.directives')
     restrict: 'A'
     scope: false
     link: (scope, element, attrs)->
-      loadingLayer = $('<div class="loading"></div>').appendTo(element)
+      loadingLayer = $('<div class="loading-wrap"></div>').appendTo(element)
       $(element).addClass('loading-container')
       scope.$watch attrs.loadingContainer, (value)->
         loadingLayer.toggle(value)

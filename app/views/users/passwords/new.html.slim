@@ -1,13 +1,13 @@
 .login-container
-  .row-fluid
-    .position-relative
+  .row-fluid.position-relative
+    .span12
       #forgot-box.widget-box.no-border.visible
         .widget-body
           .widget-main
-            h4.header.red.lighter.bigger
+            h4.header.blue.lighter.bigger
               i.icon-key
               span.l-padding-5 = t("views.forgot.title")
-            .space-6
+            .space-6 
             p = t("views.forgot.desc")
             = simple_form_for(resource, as: resource_name, url: password_path(resource_name)) do |f|
               fieldset
@@ -21,7 +21,8 @@
                   = button_tag class: "span5 offset7 btn btn-small btn-danger", data: { disable_with: t("views.forgot.disable") } do
                     i.icon-lightbulb
                     span.l-padding-5 = t("views.forgot.send")
-          .toolbar.center
+          .toolbar.center.clearfix
+            div
               a.back-to-login-link href="#{new_user_session_path}"
                 i.icon-arrow-right
                 span.l-padding-5 = t("views.forgot.login")                

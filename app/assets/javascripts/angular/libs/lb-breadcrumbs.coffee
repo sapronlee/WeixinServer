@@ -4,7 +4,7 @@ lbBreadCrumbs.factory 'BreadCrumbsService', ['$rootScope', '$location', ($rootSc
   breadcrumbs = []
   breadcrumbsService = {}
   
-  $rootScope.$on '$routeChangeSuccess', (event, current)->
+  $rootScope.$on '$stateChangeStart', (event, current)->
     breadcrumbs = []
   
   breadcrumbsService.add = (data)->
@@ -27,6 +27,5 @@ lbBreadCrumbs.directive 'lbBreadcrumbs', ['$location', 'BreadCrumbsService', ($l
       $scope.$on 'breadcrumbsRefresh', ()->
         $scope.breadcrumbs = BreadCrumbsService.getAll()
       $scope.redirectTo = (path)->
-        console.log path
         $location.path(path)
 ]

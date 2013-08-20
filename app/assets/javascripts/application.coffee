@@ -7,6 +7,7 @@
 # = require load-image.min
 # = require canvas-to-blob.min
 # = require jquery.fileupload
+# = require audiojs
 # = require i18n
 # = require i18n/translations
 

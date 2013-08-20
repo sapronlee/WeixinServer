@@ -22,9 +22,9 @@ class Reply
   as_enum :msg_type, { text: 0, news: 1, music: 2 }, field: { type: Integer, default: 0 }
 
   # Relations
-  belongs_to  :area
   has_many    :articles
   has_one     :audio
   has_and_belongs_to_many :tags
+  belongs_to  :account
   
 end

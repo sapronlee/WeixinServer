@@ -1,0 +1,32 @@
+.login-container
+  .row-fluid.position-relative
+    .span12
+      #login-box.widget-box.no-border.visible
+        .widget-body
+          .widget-main
+            h4.header.blue.lighter.bigger
+              i.icon-coffee.green
+              span.l-padding-5 = t("views.login.title")
+            .space-6
+            form name="form" autocomplate="off" novalidate="novalidate"
+              fieldset
+                /! user email
+                label
+                  span.block.input-icon.input-icon-right
+                    input.span12 type="email" placeholder="#{t("views.login.email")}"
+                    i.icon-user
+                /! user password
+                label
+                  span.block.input-icon.input-icon-right
+                    input.span12 type="password" placeholder="#{t("views.login.password")}"
+                    i.icon-lock
+                /! rememberme and button
+                .row-fluid
+                  label.span8
+                    input type="checkbox"
+                    span.lbl = t("views.login.remember_me")
+                  button.btn.btn-small.btn-primary.span4
+                    i.icon-key
+                    span.l-padding-5 = t("views.login.login")
+          .toolbar.clearfix
+                

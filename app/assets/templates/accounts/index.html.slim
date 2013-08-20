@@ -1,1 +1,33 @@
-h5 accounts/index.html
+.row-fluid
+  .span8
+    .widget-box
+      .widget-header.widget-header-blue.widget-header-flat.wi1dget-header-large
+        h5 = t('views.titles.accounts.info')
+      .widget-body
+        .widget-main
+          table#account-table.table.table-striped.table-hover
+            tbody
+              tr
+                td = Account.human_attribute_name :name
+                td {{account.name}}
+              tr
+                td = Account.human_attribute_name :en_name
+                td {{account.enName}}
+              tr
+                td = Account.human_attribute_name :api
+                td {{account.api}}
+              tr
+                td = Account.human_attribute_name :token
+                td {{account.token}}
+              tr
+                td = Account.human_attribute_name :identifier
+                td {{account.identifier}}
+              tr
+                td = Account.human_attribute_name :desc
+                td {{account.desc}}
+              tr
+                td = Account.human_attribute_name :members_count
+                td {{account.membersCount}}
+              tr
+                td = Account.human_attribute_name :replies_count
+                td {{account.repliesCount}}
