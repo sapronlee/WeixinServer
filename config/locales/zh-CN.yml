@@ -17,8 +17,11 @@
       resources:
         application:
           index: '素材'
-        articles:
+        article_groups:
           index: '图文'
+          new: '添加图文'
+          edit: '编辑图文'
+          show: '查看图文'
         pictures:
           index: '图集'
         audios:
@@ -162,6 +165,8 @@
     models:
       user: '用户'
       account: '微信帐号'
+      article_group: '图文'
+      audio: '音频'
       reply: '回复'
     attributes:
       user:
@@ -209,6 +214,9 @@
         file: '音频'
         description: '描述'
         created_at: '创建时间'
+      article_group:
+        name: '名称'
+        created_at: '创建时间'
 
   enums:
     message:
@@ -219,6 +227,12 @@
         music: '音频'
         location: '地理位置'
         event: '事件'
+    reply:
+      msg_type:
+        text: '文本'
+        news: '图文'
+        music: '音频'
+
 
   messages:
     account:
@@ -258,9 +272,7 @@
       master: '层次'
     article_cover:
       file: '文件'
-    enums:
-      reply:
-        msg_type:
-          text: '文本'
-          news: '图文'
-          music: '音频'
+
+  links:
+    commons:
+      confirm: '你确定删除吗？'

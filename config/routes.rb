@@ -45,10 +45,25 @@ WeixinServer::Application.routes.draw do
     end
   end
 
+  namespace :admin do
+    root to: 'home#index'
+    resources :users
+    resources :areas
+    resources :accounts
+    resources :messages, only: [:index, :show]
+    resources :replies
+    namespace :resources do
+      resources :audios, except: [:show]
+      resources :article_groups, only: [:index, :show]
+      resources :articles, only: [:create, :update, :destroy]
+      resources :article_covers, only: [:create, :destroy]
+    end
+  end
+
   # normal routes
   captcha_route
   root to: 'home#index'
-  
+
   # 这句必须放到最末尾
   # match '*path', to: redirect('/')
 

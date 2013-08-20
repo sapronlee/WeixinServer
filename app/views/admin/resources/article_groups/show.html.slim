@@ -1,0 +1,19 @@
+.new-form
+  .widget-box
+    .widget-header.header-color-dark
+      h5
+        i.icon-file-text
+        span = t("breadcrumbs.admin.resources.article_groups.show")
+    .widget-body
+      .widget-toolbox.padding-8
+        .btn-toolbar
+      .widget-main
+      fieldset
+        .row-fluid
+          .span8.l-padding-20
+            .control-group
+              h5 = ArticleGroup.human_attribute_name :name
+              label.label-border = @article_group.name
+        .row-fluid
+          .span8.l-padding-20
+
