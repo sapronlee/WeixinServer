@@ -15,13 +15,21 @@ angular.module('weixin.controllers').controller 'AudiosController', [
     # $scope
     ################################
     $scope.audios = []
+    $scope.audio = new Audio
     $scope.isLoading = false
+    $scope.isListView = true
+    $scope.isEditView = $scope.isNewView = false
     $scope.tableParams = new ngTableParams
       page: 1
       total: 0
       count: 10
       sorting: 
         created_at: 'desc'
+        
+    $scope.editAudio = (audio, form)->
+      $scope.isListView = false
+      $scope.isEditView = true
+      $rootScope.$broadcast('event:editAudio', audio)
     
     ################################
     # watch
@@ -38,7 +46,8 @@ angular.module('weixin.controllers').controller 'AudiosController', [
         $scope.isLoading = true
         Audio.query(params.url()).then(
           (data)->
-            $scope.audios = data.result.audios
+            angular.forEach data.result.audios, (value, key)->
+              $scope.audios.push new Audio(value)
             $scope.tableParams.total = data.result.audios_count
             $scope.isLoading = false
           (error)->

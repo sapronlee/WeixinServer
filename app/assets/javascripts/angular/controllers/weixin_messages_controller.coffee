@@ -1,4 +1,4 @@
-weixinController.controller 'WeixinMessagesController', ['$scope', '$q', 'Message', 'ngTableParams', 'BreadCrumbsService', ($scope, $q, Message, ngTableParams, BreadCrumbsService)->
+angular.module('weixin.controllers').controller 'WeixinMessagesController', ['$scope', '$q', 'Message', 'ngTableParams', 'BreadCrumbsService', ($scope, $q, Message, ngTableParams, BreadCrumbsService)->
   # 设置Breadcrumbs
   BreadCrumbsService.add
     name: I18n.t('breadcrumbs.weixin.application.index')

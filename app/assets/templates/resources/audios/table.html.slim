@@ -1,0 +1,13 @@
+.btn-toolbar
+  .btn-group
+    a.btn.btn-primary href='/#/resources/audios/new' = t('breadcrumbs.resources.audios.new')
+div loading-container="isLoading"
+  table.audios.table.table-striped.table-bordered.table-hover ng-table="tableParams" show-filter="true"
+   tr ng-repeat="tAudio in audios"
+    td.audio title="'#{Audio.human_attribute_name :file}'"
+      audio ng-audio="" data-src="'{{tAudio.file}}'"
+    td title="'#{Audio.human_attribute_name :title}'" filter="{'title': 'text'}" sortable="title" {{tAudio.title}}
+    td.date title="'#{Audio.human_attribute_name :created_at}'" filter="{'created_at': 'text'}" sortable="created_at" {{tAudio.createdAt}}
+    td.actions filter="{'action': 'button'}"
+      button.btn.btn-small ng-click="editAudio(tAudio, form)" tooltip-placement="bottom" tooltip="#{t("views.buttons.edit")}"
+        i.icon-pencil

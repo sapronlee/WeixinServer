@@ -58,6 +58,7 @@
       audios:
         index: '音频'
         new: '添加音频'
+        edit: '编辑音频'
       articles:
         index: '图文'
         new: '添加图文'
@@ -206,7 +207,7 @@
       audio:
         title: '标题'
         file: '音频'
-        desc: '描述'
+        description: '描述'
         created_at: '创建时间'
 
   enums:

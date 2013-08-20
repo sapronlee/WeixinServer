@@ -1,0 +1,71 @@
+/! top toolbar
+.btn-toolbar
+  .btn-group
+    button.btn ng-click="backList()"
+      i.icon-arrow-left.bigger-110
+      span = t("views.buttons.back")
+
+.row-fluid
+  .span8
+    .widget-box
+      .widget-header.widget-header-blue.widget-header-flat.wi1dget-header-large
+        h5 = t('breadcrumbs.resources.audios.edit')
+      .widget-body
+        .widget-main
+          /! form
+          form#audioForm name='form' novalidate='' data-file-upload="uploadOptions"
+            fieldset
+              /! file field
+              .control-group
+                label.control-label.b-margin-10 for="audioFile"
+                  = Audio.human_attribute_name :file
+                  abbr.l-margin-5 title="required" *
+                .controls ng-show="isEditAudioFile"
+                  .fileupload-buttonbar ng-hide="isAddedAudioFile"
+                    span.btn.btn-success.btn-small.fileinput-button
+                      i.icon-plus.icon-white
+                      span = t('views.buttons.add_file')
+                      input#article-cover type="file" name="file" ng-disabled="disabled"
+                  ng-include src="'/assets/resources/audios/_upload_review.html'"
+                .controls ng-show="!isEditAudioFile"
+                  ul.files.unstyled.position-relative
+                    li
+                      .row-fluid
+                        .span8.preview
+                          audio ng-audio="" data-src="'{{audio.file}}'"
+                        .span4.btn-wrap
+                          button.btn.btn-warning.btn-small.cancel data-ng-click="resetUploadFile()"
+                            i.icon-ban-circle.icon-white
+                            span = t('views.buttons.re_upload')
+                      .row-fluid
+                        .span12
+                          .info
+                            span.label.name {{audio.fileName}}
+                            span.label.label-inverse.size {{audio.fileSize | formatFileSize}}
+              /! title field
+              .control-group ng-class="{'error': form.title.$dirty && form.title.$invalid, 'success': form.title.$dirty && form.title.$valid}" ng-if="!file.error"
+                label.control-label for="audioTitle"
+                  = Audio.human_attribute_name :title
+                  abbr.l-margin-5 title="required" *
+                .controls
+                  input#audioTitle.input-block-level type="text" name="title" required="" ng-model="audio.title"
+                  .help-block ng-show="form.title.$dirty && form.title.$invalid"
+                    span ng-show="form.title.$error.required" = t("errors.messages.blank")
+      
+              /! description field
+              .control-group ng-class="{'error': form.description.$dirty && form.description.$invalid, 'success': form.description.$dirty && form.description.$valid}" ng-if="!file.error"
+                label.control-label for="audio_description"
+                  = Audio.human_attribute_name :description
+                  abbr.l-margin-5 title="required" *
+                .controls
+                  textarea#audio_description.input-block-level rows="4" name="description" required="" ng-model="audio.description"
+                  .help-block ng-show="form.description.$dirty && form.description.$invalid"
+                    span ng-show="form.description.$error.required" = t("errors.messages.blank")
+              /! buttons
+              .form-actions
+                button.btn.btn-primary.r-margin-10 type="submit" ng-click="submitAudio(form)" ng-disabled="isShowSubmitButton(form)"
+                  i.icon-ok.bigger-110
+                  span = t("views.buttons.submit")
+                button.btn ng-click="backList()"
+                  i.icon-arrow-left.bigger-110
+                  span = t("views.buttons.back")

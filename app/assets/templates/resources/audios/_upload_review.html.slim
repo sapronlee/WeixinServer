@@ -1,7 +1,7 @@
 ul.files.unstyled.position-relative ng-cloak=""
   li data-ng-repeat="file in queue"
     /! select upload file error
-    .row-fluid ng-if="!!file.error"
+    .row-fluid.upload-error ng-if="!!file.error"
       span.label.label-important {{file.error}}
       button.btn.btn-warning.btn-small.cancel data-ng-click="fileCancel(file)"
         i.icon-ban-circle.icon-white

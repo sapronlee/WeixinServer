@@ -1,4 +1,4 @@
-weixinController.controller 'WeixinAreasController', ['$scope', 'Area', 'ngTableParams', '$routeParams', 'BreadCrumbsService', 'alertService', '$dialog', ($scope, Area, ngTableParams, $routeParams, BreadCrumbsService, alertService, $dialog)->
+angular.module('weixin.controllers').controller 'WeixinAreasController', ['$scope', 'Area', 'ngTableParams', '$routeParams', 'BreadCrumbsService', 'alertService', '$dialog', ($scope, Area, ngTableParams, $routeParams, BreadCrumbsService, alertService, $dialog)->
   # 设置Breadcrumbs
   BreadCrumbsService.add
     name: I18n.t('breadcrumbs.weixin.application.index')

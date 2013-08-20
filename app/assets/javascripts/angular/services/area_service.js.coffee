@@ -1,4 +1,4 @@
-weixinService.factory 'Area', ['railsResourceFactory', (railsResourceFactory)->
+angular.module('weixin.services').factory 'Area', ['railsResourceFactory', (railsResourceFactory)->
   resource = railsResourceFactory
     url: '/services/weixin/areas'
     name: 'area'

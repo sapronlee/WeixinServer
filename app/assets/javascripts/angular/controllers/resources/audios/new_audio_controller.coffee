@@ -61,6 +61,7 @@ angular.module('weixin.controllers').controller 'NewAudioController', [
           $scope.isValidFile = false
         else
           $scope.isValidFile = true
+      console.log $scope.queue
 
     
     ################################

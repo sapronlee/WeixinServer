@@ -105,6 +105,7 @@ module Mongoid
             # 更新type和size
             document.send("#{field}_type=", MIME::Types.type_for(document.send("#{field}").file.original_filename).first.to_s)
             document.send("#{field}_size=", document.send("#{field}").file.size)
+            document.send("#{field}_name=", document.send("#{field}").file.filename)
             # 更新尺寸
             if is_dimensions
               width, height = `identify -format "%wx%h" #{document.send("#{field}").path}`.split(/x/)
