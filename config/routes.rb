@@ -23,28 +23,6 @@ WeixinServer::Application.routes.draw do
     end
   end
 
-  # angular services routes
-  namespace :services, defaults: { format: :json }, constraints: { format: :json } do
-    namespace :weixin do
-      resources :replies, only: [:index, :create, :update, :destroy] do
-        post 'unique_number', on: :collection
-      end
-      resources :areas, only: [:index, :create, :update, :destroy] do
-        get :list, on: :collection
-      end
-    end
-    namespace :resources do
-      resources :audios, only: [:index, :create]
-      resources :article_groups, only: [:index, :show]
-      resources :articles, only: [:create, :update, :destroy]
-      resources :article_covers, only: [:create, :destroy]
-    end
-    resources :users, only: [] do
-      post :require_current_user, on: :collection
-      get :account, on: :collection
-    end
-  end
-
   namespace :admin do
     root to: 'home#index'
     resources :users
@@ -63,8 +41,12 @@ WeixinServer::Application.routes.draw do
   # normal routes
   captcha_route
   root to: 'home#index'
-
-  # 这句必须放到最末尾
-  # match '*path', to: redirect('/')
+  resources :accounts
+  resources :messages
+  resources :replies
+  namespace :resources do
+    resources :audios
+    resources :articles
+  end
 
 end

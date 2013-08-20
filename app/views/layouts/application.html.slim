@@ -1,5 +1,5 @@
 doctype html
-html lang="zh-cn" ng-app='weixin'
+html
   head
     meta charset="utf-8"
     meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"
@@ -7,18 +7,19 @@ html lang="zh-cn" ng-app='weixin'
     meta name="description" content="#{Setting.app_name_locale}"
     title = content_for?(:title) ? yield(:title) : Setting.app_name_locale
     = csrf_meta_tags
-
+    
     /! Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       javascript src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"
-
+    
     = stylesheet_link_tag :application, media: :all
+    = content_for :styles
     
     /[if IE 7]
       = stylesheet_link_tag 'font-awesome-ie7'
     
-  body.navbar-fixed ng-controller="MainController"
-    .navbar.navbar-fixed-top bs-navbar=''
+  body.navbar-fixed
+    .navbar.navbar-fixed-top
       .navbar-inner
         .container
           a.btn.btn-navbar data-toggle='collapse' data-target='.nav-collapse'
@@ -30,29 +31,18 @@ html lang="zh-cn" ng-app='weixin'
             span = Setting.app_name_locale
           .nav-collapse.collapse.navbar-responsive-collapse
             ul.nav
-              /! home
-              li.active data-match-route='/' = link_to t('breadcrumbs.home.index'), root_path
-              /! accounts
-              - if current_user.account.present?
-                li.active data-match-route='/accounts' = link_to t('breadcrumbs.weixin.application.accounts'), '/#/accounts'
-              /! messages
-              - if current_user.account.present?
-                li.active data-match-route='/messages' = link_to t('breadcrumbs.weixin.application.messages'), '/#/messages'
-              /! replies
-              - if current_user.account.present?
-                li.active data-match-route='/replies' = link_to t('breadcrumbs.weixin.application.replies'), '/#/replies'
-              /! resources
-              - if current_user.account.present?
-                li.dropdown data-match-route='/resources/.*'
-                  a.dropdown-toggle href='#' data-toggle='dropdown'
-                    span.title.r-padding-5 = t('breadcrumbs.resources.application.index')
-                    b.caret
-                  ul.dropdown-menu.dropdown-yellow.dropdown-caret.dropdown-closer
-                    li = link_to t('breadcrumbs.resources.audios.index'), '/#/resources/audios'
-                    li.divider
-                    li = link_to t('breadcrumbs.resources.articles.index'), '/#/resources/articles'
+              li class="#{active_page %w(home), value: 'active'}" = link_to t('breadcrumbs.home.index'), root_path
+              li class="#{active_page %w(accounts), value: 'active'}" = link_to t('breadcrumbs.accounts.index'), accounts_path
+              li class="#{active_page %w(messages), value: 'active'}" = link_to t('breadcrumbs.messages.index'), messages_path
+              li class="#{active_page %w(replies), value: 'active'}" = link_to t('breadcrumbs.replies.index'), replies_path
+              li.dropdown class="#{active_page %w(resources), value: 'active'}"
+                a.dropdown-toggle href='#' data-toggle='dropdown'
+                  span.title.r-padding-5 = t('breadcrumbs.resources.application.index')
+                  b.caret
+                ul.dropdown-menu.dropdown-yellow.dropdown-caret.dropdown-closer
+                  li = link_to t('breadcrumbs.resources.audios.index'), resources_audios_path
+                  li = link_to t('breadcrumbs.resources.articles.index'), resources_articles_path
             ul.nav.ace-nav.pull-right
-              /! users
               li.light-blue.user-profile
                 = link_to '#', class: 'user-menu dropdown-toggle', data: { toggle: 'dropdown' } do
                   = image_tag 'avatars/avatar.png', class: 'nav-user-photo'
@@ -70,11 +60,11 @@ html lang="zh-cn" ng-app='weixin'
     .container
       .row-fluid
         .span12
-          lb-breadcrumbs
+          #breadcrumbs.margin-top
+            = render_breadcrumbs
       .row-fluid.t-margin-20
         .span12
-          ui-view
-    footer
+          = yield
       
-    = javascript_include_tag :application, :angular
+    = javascript_include_tag :application
     = content_for :scripts
