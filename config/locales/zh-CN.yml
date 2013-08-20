@@ -229,34 +229,34 @@
     audio:
       success: "操作音频成功！"
       error: "操作音频失败！"
-        api: '访问API'
-        members_count: '关注数'
-        replies_count: '回复数'
-      reply:
-        number: '唯一编号'
-        name: '名字'
-        title: '标题'
-        area: '区域'
-        area_id: '所属区域'
-        msg_type: '类型'
-        content: '文本内容'
-        audio_title: '音频标题'
-        audio_file: '音频文件'
-      audio:
-        file: '音频文件'
-        title: '标题'
-        description: '描述'
-        created_at: '创建时间'
-        updated_at: '修改时间'
-      article:
-        title: '标题'
-        description: '描述'
-        content: '正文'
-        url: '原文链接'
-        cover: '封面'
-        master: '层次'
-      article_cover:
-        file: '文件'
+      api: '访问API'
+      members_count: '关注数'
+      replies_count: '回复数'
+    reply:
+      number: '唯一编号'
+      name: '名字'
+      title: '标题'
+      area: '区域'
+      area_id: '所属区域'
+      msg_type: '类型'
+      content: '文本内容'
+      audio_title: '音频标题'
+      audio_file: '音频文件'
+    audio:
+      file: '音频文件'
+      title: '标题'
+      description: '描述'
+      created_at: '创建时间'
+      updated_at: '修改时间'
+    article:
+      title: '标题'
+      description: '描述'
+      content: '正文'
+      url: '原文链接'
+      cover: '封面'
+      master: '层次'
+    article_cover:
+      file: '文件'
     enums:
       reply:
         msg_type:
