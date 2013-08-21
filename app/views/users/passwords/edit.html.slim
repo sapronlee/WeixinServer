@@ -6,9 +6,9 @@
           .widget-main
             h4.header.blue.lighter.bigger
               i.icon-key
-              span.l-padding-5 = t("views.reset.title")
+              span.l-padding-5 = t("reset.title")
             .space-6 
-            p = t("views.reset.desc")
+            p = t("reset.desc")
             = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
               fieldset
                 = simple_error_messages!(resource, false)
@@ -16,19 +16,19 @@
                 = f.input :password, label: false, hint: false, error: false do
                   label
                     span.block.input-icon.input-icon-right
-                      = f.password_field :password, class: :span12, placeholder: t("views.reset.password"), autofocus: true
+                      = f.password_field :password, class: :span12, placeholder: t("reset.password"), autofocus: true
                       i.icon-lock
                 = f.input :password_confirmation, label: false, hint: false, error: false do
                   label
                     span.block.input-icon.input-icon-right
-                      = f.password_field :password_confirmation, class: :span12, placeholder: t("views.reset.password_confirmation")
+                      = f.password_field :password_confirmation, class: :span12, placeholder: t("reset.password_confirmation")
                       i.icon-lock
                 .row-fluid
-                  = button_tag class: "span5 offset7 btn btn-small btn-danger", data: { disable_with: t("views.reset.disable") } do
+                  = button_tag class: "span5 offset7 btn btn-small btn-danger", data: { disable_with: t("reset.disable") } do
                     i.icon-lightbulb
-                    span.l-padding-5 = t("views.reset.send")
+                    span.l-padding-5 = t("reset.send")
           .toolbar.center.clearfix
             div
               a.back-to-login-link href="#{new_user_session_path}"
                 i.icon-arrow-right
-                span.l-padding-5 = t("views.forgot.login")
+                span.l-padding-5 = t("forgot.login")
