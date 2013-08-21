@@ -1,0 +1,51 @@
+'zh-CN':
+  breadcrumbs:
+    application:
+      home: '首页'
+      index: '微信平台'
+      user: '用户'
+      account: '帐号'
+    users:
+      index: '用户'
+    resources:
+      application:
+        index: '素材'
+      audios:
+        index: '音频'
+        new: '添加音频'
+        edit: '编辑音频'
+      articles:
+        index: '图文'
+        new: '添加图文'
+
+    # namespace admin
+    admin:
+      application:
+        index: '首页'
+      users:
+        index: '用户列表'
+        new: '添加用户'
+        edit: '编辑用户'
+      accounts:
+        index: '帐号列表'
+        new: '添加帐号'
+        edit: '编辑帐号'
+      messages:
+        index: '消息列表'
+        show: '查看消息'
+      resources:
+        application:
+          index: '素材'
+        article_groups:
+          index: '图文'
+          new: '添加图文'
+          edit: '编辑图文'
+          show: '查看图文'
+        pictures:
+          index: '图集'
+        audios:
+          index: '音频'
+          new: '添加音频'
+          edit: '编辑音频'
+        videos:
+          index: '视频'

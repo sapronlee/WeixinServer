@@ -1,152 +1,67 @@
 'zh-CN':
-  breadcrumbs:
-    admin:
-      application:
-        index: '首页'
-      users:
-        index: '用户列表'
-        new: '添加用户'
-        edit: '编辑用户'
-      accounts:
-        index: '帐号列表'
-        new: '添加帐号'
-        edit: '编辑帐号'
-      messages:
-        index: '消息列表'
-        show: '查看消息'
-      resources:
-        application:
-          index: '素材'
-        article_groups:
-          index: '图文'
-          new: '添加图文'
-          edit: '编辑图文'
-          show: '查看图文'
-        pictures:
-          index: '图集'
-        audios:
-          index: '音频'
-          new: '添加音频'
-          edit: '编辑音频'
-        videos:
-          index: '视频'
-    application:
-      index: '微信平台'
-      user_manager: '用户管理'
-      users: '用户'
-      accounts: '帐号'
-    home:
-      index: '首页'
-    users:
-      index: '用户'
-    weixin:
-      application:
-        index: '微信'
-        accounts: '帐号'
-        messages: '消息'
-        replies: '回复'
-      accounts:
-        index: '帐号'
-        destroy: '删除帐号'
-      replies:
-        index: '回复'
-        new: '添加新回复'
-      messages:
-        index: '消息'
-    resources:
-      application:
-        index: '素材'
-        audios: '音频'
-        articles: '图文'
-      audios:
-        index: '音频'
-        new: '添加音频'
-        edit: '编辑音频'
-      articles:
-        index: '图文'
-        new: '添加图文'
+  login:
+    title: '壹旅游微信服务平台欢迎你！'
+    email: '邮箱'
+    password: '密码'
+    captcha: '验证码'
+    remember_me: ' 记住我'
+    login: '登录'
+    forgot_password: '忘记密码'
+    disable: '请稍候...'
 
-  views:
-    user:
-      setting: '设置'
-      logout: '退出'
-    login:
-      title: '壹旅游微信服务平台欢迎你！'
-      email: '邮箱'
-      password: '密码'
-      captcha: '验证码'
-      remember_me: ' 记住我'
-      login: '登录'
-      forgot_password: '忘记密码'
-      disable: '请稍候...'
-    forgot:
-      title: 'Retrieve Password'
-      email: '邮箱'
-      send: '发送邮件'
-      login: '返回登录'
-      desc: '输入你注册时使用的邮箱。'
-      disable: '请稍候...'
-    reset:
-      title: 'Reset Password'
-      desc: '请填写你要修改的新密码。'
-      password: '新密码'
-      password_confirmation: '重复密码'
-      send: '修改密码'
-      disable: '请稍候...'
-    buttons:
-      actions: '操作'
-      back: '返回列表'
-      edit: '修改'
-      submit: '提交保存'
-      destroy: '删除'
-      reset: '重置表单'
-      search: '搜索'
-      tips: '小贴士'
-      close: '关闭'
-      cancel: '取消'
-      re_upload: '重新上传'
-      upload_audio: '上传音频'
-      upload_news: '上传图文'
-      add_file: '添加文件'
-      review: '预览'
-    accounts:
-      empty: '你还没有添加微信帐号，赶快添加吧！'
-      add_limit: '你还能添加个 %{limit} 微信帐号！'
-      create_success: '你已经成功添加微信帐号，赶快激活它吧！'
-    messages:
-      link: '点击我查看'
-    affix:
-      title: '帮助栏'
-    pagination:
-      first: "首页"
-      last: "尾页"
-      previous: "上一页"
-      next: "下一页"
-      truncate: "..."
-    titles:
-      alert: '警告'
-      heads_up: '小心'
-      accounts:
-        info: '帐号信息'
-    messages:
-      place_chose: '请选择'
-      error_title: '出错啦'
-      audio_file_blank: '必须上传音频文件。'
-      audios:
-        success: '创建音频文件成功！'
-      accounts:
-        empty: '您的微信帐号还没有开通，请联系管理员。'
-        not_found: '你的微信帐号异常，请联系管理员。'
-      reply:
-        add_text: '添加文本'
-        add_news: '添加图文'
-        add_music: '添加音频'
-      articles:
-        is_master: '顶层'
-        master: '“顶层”表示一组图文中第一篇，图片为640X320，非顶层图片为80X80，一组图文中只能有一个顶层。'
-        success_upload_article_cover: '封面上传成功！'
-        success_destroy_article_cover: '封面删除成功！'
-        success_create_article: '添加图文成功！'
+  forgot:
+    title: 'Retrieve Password'
+    email: '邮箱'
+    send: '发送邮件'
+    login: '返回登录'
+    desc: '输入你注册时使用的邮箱。'
+    disable: '请稍候...'
+
+  reset:
+    title: 'Reset Password'
+    desc: '请填写你要修改的新密码。'
+    password: '新密码'
+    password_confirmation: '重复密码'
+    send: '修改密码'
+    disable: '请稍候...'
+
+  pagination:
+    first: "首页"
+    last: "尾页"
+    previous: "上一页"
+    next: "下一页"
+    truncate: "..."
+
+  titles:
+    alert: '警告'
+    heads_up: '小心'
+    link: '点击我查看'
+    affix: '帮助栏'
+    error: '出错啦'
+
+  buttons:
+    setting: '设置'
+    logout: '退出'
+    actions: '操作'
+    back: '返回列表'
+    edit: '修改'
+    submit: '提交保存'
+    destroy: '删除'
+    reset: '重置表单'
+    search: '搜索'
+    tips: '小贴士'
+    close: '关闭'
+    cancel: '取消'
+    re_upload: '重新上传'
+    upload_audio: '上传音频'
+    upload_news: '上传图文'
+    add_file: '添加文件'
+    review: '预览'
+    
+  messages:
+    place_chose: '请选择'
+    audio_file_blank: '必须上传音频文件。'
+    confirm: '你确定删除吗？'
 
   errors:
     messages:
@@ -160,6 +75,13 @@
         accept_file_types: '文件类型错误。'
         max_number_of_files: '超过最大上传数量。'
         max_file_size: '文件太大了，上传限制为 %{count} 。'
+      accounts:
+        empty: '您的微信帐号还没有开通，请联系管理员。'
+        not_found: '你的微信帐号异常，请联系管理员。'
+  
+  successes:
+    messages:
+      create_audio: '创建音频文件成功！'
 
   mongoid:
     models:
@@ -180,9 +102,6 @@
         created_at: '创建时间'
         last_sign_in_at: '最后登录时间'
         last_sign_in_ip: '最后登录IP'
-      area:
-        name: '名称'
-        created_at: '创建时间'
       message:
         name: '微信名称'
         msg_type: '消息类型'
@@ -207,6 +126,9 @@
         domain: '域名'
         ip: 'IP'
         created_at: '创建时间'
+        api: '访问API'
+        members_count: '关注数'
+        replies_count: '回复数'
       admin_user:
         realname: '昵称'
       audio:
@@ -217,6 +139,31 @@
       article_group:
         name: '名称'
         created_at: '创建时间'
+      reply:
+        number: '唯一编号'
+        name: '名字'
+        title: '标题'
+        area: '区域'
+        area_id: '所属区域'
+        msg_type: '类型'
+        content: '文本内容'
+        audio_title: '音频标题'
+        audio_file: '音频文件'
+      audio:
+        file: '音频文件'
+        title: '标题'
+        description: '描述'
+        created_at: '创建时间'
+        updated_at: '修改时间'
+      article:
+        title: '标题'
+        description: '描述'
+        content: '正文'
+        url: '原文链接'
+        cover: '封面'
+        master: '层次'
+      article_cover:
+        file: '文件'
 
   enums:
     message:
@@ -233,46 +180,3 @@
         news: '图文'
         music: '音频'
 
-
-  messages:
-    account:
-      success: "操作帐号成功！"
-      error: "操作帐号失败！"
-    user:
-      success: "操作用户成功！"
-      error: "操作用户失败！"
-    audio:
-      success: "操作音频成功！"
-      error: "操作音频失败！"
-      api: '访问API'
-      members_count: '关注数'
-      replies_count: '回复数'
-    reply:
-      number: '唯一编号'
-      name: '名字'
-      title: '标题'
-      area: '区域'
-      area_id: '所属区域'
-      msg_type: '类型'
-      content: '文本内容'
-      audio_title: '音频标题'
-      audio_file: '音频文件'
-    audio:
-      file: '音频文件'
-      title: '标题'
-      description: '描述'
-      created_at: '创建时间'
-      updated_at: '修改时间'
-    article:
-      title: '标题'
-      description: '描述'
-      content: '正文'
-      url: '原文链接'
-      cover: '封面'
-      master: '层次'
-    article_cover:
-      file: '文件'
-
-  links:
-    commons:
-      confirm: '你确定删除吗？'

@@ -32,7 +32,9 @@ WeixinServer::Application.routes.draw do
     resources :replies
     namespace :resources do
       resources :audios, except: [:show]
-      resources :article_groups, only: [:index, :show]
+      resources :article_groups, only: [:index, :show] do
+        resources :articles
+      end
       resources :articles, only: [:create, :update, :destroy]
       resources :article_covers, only: [:create, :destroy]
     end
